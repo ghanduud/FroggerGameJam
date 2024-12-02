@@ -1,7 +1,7 @@
 #include "PhysicsWorld.h"
 
 
-void PhysicsWorld::addParticle(MovingOpject* particle) {
+void PhysicsWorld::addMovingOpject(MovingOpject* particle) {
 	this->particles.push_back(particle);
 }
 
@@ -16,8 +16,7 @@ void PhysicsWorld::Update(float deltaTime) {
             }
 
             if (particle->rectangleCollider.checkCollision(otherParticle->rectangleCollider)) {
-                particle->velocity = sf::Vector2f(-(particle->velocity.x), -(particle->velocity.y));
-                otherParticle->velocity = sf::Vector2f(-(otherParticle->velocity.x), -(otherParticle->velocity.y));
+                
             }
      
 
