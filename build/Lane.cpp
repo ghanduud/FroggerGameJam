@@ -5,10 +5,9 @@ Lane::Lane(LaneType type, sf::Vector2f size,TextureLoader& textureLoader) {
     /*if (!this->landTexture.loadFromFile("../resources/land.png")) {
         std::cerr << "Error loading texture!" << std::endl;
     }*/
-    landTexture = &(textureLoader.landTexture);
-    landTexture->setRepeated(true);
-    landSprit.setTextureRect(sf::Rect(0, 0, (int)(landTexture->getSize().x * size.x / size.y), (int)landTexture->getSize().y));
-    landSprit.setScale(sf::Vector2f(size.y/landTexture->getSize().x, size.y / landTexture->getSize().y));
+    
+    landSprit.setTextureRect(sf::Rect(0, 0, (int)(textureLoader.landTexture.getSize().x * size.x / size.y), (int)textureLoader.landTexture.getSize().y));
+    landSprit.setScale(sf::Vector2f(size.y/textureLoader.landTexture.getSize().x, size.y / textureLoader.landTexture.getSize().y));
     
 
     laneType = type;
