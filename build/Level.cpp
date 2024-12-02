@@ -4,7 +4,7 @@
 
 
 
-Level::Level() {
+Level::Level(TextureLoader textureLoader) {
 
     sf::Vector2f frogPosition(400, 80*6+40 );
 
@@ -15,16 +15,16 @@ Level::Level() {
     for (int i = 0; i < 40; i++) {
         int r = rand() % 3;
         if (r==0) {
-            Lane lane(LaneType::resting, sf::Vector2f(800, 80));
+            Lane lane(LaneType::resting, sf::Vector2f(800, 80),textureLoader);
             this->lanes.push_back(lane);
         }
         else if (r == 1) {
 
-            Lane lane(LaneType::road, sf::Vector2f(800, 80));
+            Lane lane(LaneType::road, sf::Vector2f(800, 80),textureLoader);
             this->lanes.push_back(lane);
         }
         else if (r == 2) {
-            Lane lane(LaneType::water, sf::Vector2f(800, 80));
+            Lane lane(LaneType::water, sf::Vector2f(800, 80),textureLoader);
             this->lanes.push_back(lane);
         }
     }

@@ -101,6 +101,7 @@
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="MovingPlatform.cpp" />
     <ClCompile Include="Renderer.cpp" />
+    <ClCompile Include="TextureLoader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AABBCollider.h" />
@@ -110,6 +111,7 @@
     <ClInclude Include="Level.h" />
     <ClInclude Include="MovingPlatform.h" />
     <ClInclude Include="Renderer.h" />
+    <ClInclude Include="TextureLoader.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

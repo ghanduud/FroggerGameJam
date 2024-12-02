@@ -7,6 +7,7 @@
 #include "Frog.h"
 #include "MovingPlatform.h"
 #include <SFML/Graphics/RenderWindow.hpp>
+#include "TextureLoader.h"
 
 
 class Level
@@ -20,7 +21,7 @@ public:
 	bool isGameOver = false;
 	float gameOverTimer = 0.0f;
 
-	Level();
+	Level(TextureLoader textureLoader);
 
 	void update(float dt, Direction direction);
 	void renderMap(int sizeOfLanesInWindow, sf::RenderWindow& window);

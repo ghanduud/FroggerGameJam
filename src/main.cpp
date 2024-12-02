@@ -10,6 +10,7 @@
 #include "../build/Renderer.h"
 #include "../build/Game.h"
 #include "../build/Level.h"
+#include "../build/TextureLoader.h"
 
 //pofo was here
 
@@ -30,8 +31,9 @@ int main() {
 
 
 
-    Level level1;
-
+    
+    TextureLoader textureLoader;
+    Level level1(textureLoader);
 
     
     Direction direction;
