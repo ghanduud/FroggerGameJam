@@ -22,6 +22,6 @@ Lane::Lane(LaneType type, sf::Vector2f size)
 
 void Lane::render(sf::RenderWindow& window, int index)
 {
-	laneTile.setPosition(sf::Vector2f(0, (10 - index) * laneTile.getSize().y));
+	laneTile.setPosition(sf::Vector2f(0, (9 - index) * laneTile.getSize().y));
 	window.draw(laneTile);
 }

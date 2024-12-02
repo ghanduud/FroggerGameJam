@@ -22,8 +22,8 @@ Frog::Frog(sf::Vector2f Position, float laneHeight)
 	this->frogCollider.lr = Position + sf::Vector2f(this->frogSize, this->frogSize) / 2.f;
 
 	// testing frog
-	this->frogShapeTest.setFillColor(sf::Color::Green);
-	this->frogShapeTest.setOrigin(laneHeight, laneHeight);
+	this->frogShapeTest.setFillColor(sf::Color::Red);
+	this->frogShapeTest.setOrigin(laneHeight / 2, laneHeight / 2);
 	this->frogShapeTest.setPosition(Position);
 	this->frogShapeTest.setSize(sf::Vector2f(laneHeight, laneHeight));
 	this->frogShapeTest.setRotation(270.f);
