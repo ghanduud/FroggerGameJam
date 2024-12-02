@@ -95,13 +95,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp" />
+    <ClCompile Include="Frog.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="PhysicsWorld.cpp" />
-    <ClCompile Include="MovingPlatform.cpp" />
+    <ClCompile Include="Particle.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AABBCollider.h" />
-    <ClInclude Include="MovingPlatform.h" />
+    <ClInclude Include="Frog.h" />
+    <ClInclude Include="Particle.h" />
     <ClInclude Include="PhysicsWorld.h" />
     <ClInclude Include="Renderer.h" />
   </ItemGroup>
