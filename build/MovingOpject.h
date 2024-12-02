@@ -3,19 +3,19 @@
 #include <SFML/Graphics.hpp>
 #include <stdexcept>
 
-class Particle {
+class MovingOpject {
 public:
     sf::Vector2f postion;
     sf::RectangleShape shape;
     AABBCollider rectangleCollider;
 
 
-    Particle() {
+    MovingOpject() {
         
     }
 
 
-    void Particle::Update(float dt) {
+    void MovingOpject::Update(float dt) {
 
     }
 };

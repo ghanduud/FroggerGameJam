@@ -1,16 +1,16 @@
 #include "PhysicsWorld.h"
 
 
-void PhysicsWorld::addParticle(Particle* particle) {
+void PhysicsWorld::addParticle(MovingOpject* particle) {
 	this->particles.push_back(particle);
 }
 
 void PhysicsWorld::Update(float deltaTime) {
-    for (Particle* particle : this->particles) {
+    for (MovingOpject* particle : this->particles) {
         particle->Update(deltaTime);
 
 
-        for (Particle* otherParticle : this->particles) {
+        for (MovingOpject* otherParticle : this->particles) {
             if (particle == otherParticle) {
                 continue;
             }

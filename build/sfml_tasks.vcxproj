@@ -97,11 +97,11 @@
     <ClCompile Include="..\src\main.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="PhysicsWorld.cpp" />
-    <ClCompile Include="Particle.cpp" />
+    <ClCompile Include="MovingOpject.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AABBCollider.h" />
-    <ClInclude Include="Particle.h" />
+    <ClInclude Include="MovingOpject.h" />
     <ClInclude Include="PhysicsWorld.h" />
     <ClInclude Include="Renderer.h" />
   </ItemGroup>
