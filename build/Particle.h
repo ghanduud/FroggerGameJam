@@ -1,30 +1,17 @@
 #pragma once
-#include "Vector2d.h"
-#include "Collider.h"
 #include "AABBCollider.h"
-#include "SATCollider.h"
 #include <SFML/Graphics.hpp>
 #include <stdexcept>
 
 class Particle {
 public:
-    Vector2d postion;
-    Vector2d velocity;
-    Vector2d acceleration;
-    Vector2d forces;
+    sf::Vector2f postion;
 
     float mass;
     float drag;
 
-
-    
-    sf::CircleShape* circleParticle = nullptr;
-    sf::RectangleShape* rectangleParticle = nullptr;
-    sf::ConvexShape* convexParticle = nullptr;
-
-    Collider circleCollider;
     AABBCollider rectangleCollider;
-    SATCollider convexCollider;
+
 
     Particle(Vector2d postion, sf::Shape* shape, float mass = 1, float drag = 0.3f) {
         if (mass <= 0) {

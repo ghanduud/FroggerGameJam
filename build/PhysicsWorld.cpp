@@ -15,26 +15,11 @@ void PhysicsWorld::Update(float deltaTime) {
                 continue;
             }
 
-
-
-            if (particle->circleParticle && otherParticle->circleParticle) {
-                if (particle->circleCollider.checkCollision(otherParticle->circleCollider)) {
-                    particle->velocity = Vector2d(-(particle->velocity.x), -(particle->velocity.y));
-                    otherParticle->velocity = Vector2d(-(otherParticle->velocity.x), -(otherParticle->velocity.y));
-                }
+            if (particle->rectangleCollider.checkCollision(otherParticle->rectangleCollider)) {
+                particle->velocity = sf::Vector2f(-(particle->velocity.x), -(particle->velocity.y));
+                otherParticle->velocity = sf::Vector2f(-(otherParticle->velocity.x), -(otherParticle->velocity.y));
             }
-            else if (particle->rectangleParticle && otherParticle->rectangleParticle) {
-                if (particle->rectangleCollider.checkCollision(otherParticle->rectangleCollider)) {
-                    particle->velocity = Vector2d(-(particle->velocity.x), -(particle->velocity.y));
-                    otherParticle->velocity = Vector2d(-(otherParticle->velocity.x), -(otherParticle->velocity.y));
-                }
-            }
-            else if (particle->convexParticle && otherParticle->convexParticle) {
-                if (particle->convexCollider.checkCollision(otherParticle->convexCollider)) {
-                    particle->velocity = Vector2d(-(particle->velocity.x), -(particle->velocity.y));
-                    otherParticle->velocity = Vector2d(-(otherParticle->velocity.x), -(otherParticle->velocity.y));
-                }
-            }     
+     
 
         }
     }

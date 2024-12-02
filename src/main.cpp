@@ -31,8 +31,8 @@ int main() {
     r.AddDrawable(&c1);
 
 
-    Particle p1(Vector2d(0, 300), &c1);
-    p1.addForce(Vector2d(800, 0));
+    Particle p1(sf::Vector2f(0, 300), &c1);
+    p1.addForce(sf::Vector2f(800, 0));
     pw.addParticle(&p1);
 
 
@@ -42,8 +42,8 @@ int main() {
     r.AddDrawable(&c2);
 
 
-    Particle p2(Vector2d(700, 300), &c2);
-    p2.addForce(Vector2d(-800, 0));  
+    Particle p2(sf::Vector2f(700, 300), &c2);
+    p2.addForce(sf::Vector2f(-800, 0));  
     pw.addParticle(&p2);
 
 
@@ -52,8 +52,8 @@ int main() {
     rect1.setOrigin(Vector2f(15, 15));
     r.AddDrawable(&rect1);
 
-    Particle p3(Vector2d(0, 100), &rect1);
-    p3.addForce(Vector2d(800, 0)); 
+    Particle p3(sf::Vector2f(0, 100), &rect1);
+    p3.addForce(sf::Vector2f(800, 0)); 
     pw.addParticle(&p3);
 
 
@@ -61,8 +61,8 @@ int main() {
     rect2.setOrigin(Vector2f(15, 15));
     r.AddDrawable(&rect2);
 
-    Particle p4(Vector2d(700, 100), &rect2);
-    p4.addForce(Vector2d(-800, 0));  
+    Particle p4(sf::Vector2f(700, 100), &rect2);
+    p4.addForce(sf::Vector2f(-800, 0));  
     pw.addParticle(&p4);
 
 
@@ -77,8 +77,8 @@ int main() {
     convex1.setOrigin(25.f, 35.f); 
     r.AddDrawable(&convex1);
 
-    Particle p5(Vector2d(0, 500), &convex1);
-    p5.addForce(Vector2d(800, 0));
+    Particle p5(sf::Vector2f(0, 500), &convex1);
+    p5.addForce(sf::Vector2f(800, 0));
     pw.addParticle(&p5);
 
 
@@ -92,8 +92,8 @@ int main() {
     convex2.setOrigin(15.f, 35.f);
     r.AddDrawable(&convex2);
 
-    Particle p6(Vector2d(700, 500), &convex2);
-    p6.addForce(Vector2d(-800, 0));
+    Particle p6(sf::Vector2f(700, 500), &convex2);
+    p6.addForce(sf::Vector2f(-800, 0));
     pw.addParticle(&p6);
 
 

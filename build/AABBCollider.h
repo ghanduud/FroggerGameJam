@@ -1,16 +1,15 @@
 #pragma once
-#include "Vector2d.h"
 
 class AABBCollider {
 public:
-    Vector2d ul;   
-    Vector2d lr;     
-    Vector2d position;
+    sf::Vector2f ul;   
+    sf::Vector2f lr;     
+    sf::Vector2f position;
 
 
 
-    void updatePosition(Vector2d newPosition) {
-        Vector2d offset = newPosition - position;
+    void updatePosition(sf::Vector2f newPosition) {
+        sf::Vector2f offset = newPosition - position;
         ul += offset;
         lr += offset;
         position = newPosition;

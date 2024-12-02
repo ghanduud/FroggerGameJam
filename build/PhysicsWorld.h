@@ -10,8 +10,6 @@ private:
 	list<Particle*> particles;
 public:
 	void addParticle(Particle* particle);
-	void Update(float deltaTime);
-
-	static const Vector2d gravity;
+	void Update(float deltaTime);;
 };
 
