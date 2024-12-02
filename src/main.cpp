@@ -26,6 +26,7 @@ int main() {
     // THIS IS NANOOO!!!!!
 
     
+    Direction direction;
 
 
     while (window.isOpen()) {
@@ -33,6 +34,23 @@ int main() {
         while (window.pollEvent(event)) {
             if (event.type == sf::Event::Closed) {
                 window.close();
+            }
+
+            if (event.key.code == sf::Keyboard::Up)
+            {
+                
+            }
+            if (event.key.code == sf::Keyboard::Down)
+            {
+
+            }
+            if (event.key.code == sf::Keyboard::Left)
+            {
+
+            }
+            if (event.key.code == sf::Keyboard::Right)
+            {
+
             }
         }
 
