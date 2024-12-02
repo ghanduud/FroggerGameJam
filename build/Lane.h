@@ -19,9 +19,9 @@ public:
 	std::vector<MovingPlatform> movingPlatforms;
 	sf::RectangleShape laneTile;
 	sf::Sprite landSprit;
-	sf::Texture* landTexture;
+	//sf::Texture* landTexture;
 
-	Lane(LaneType type, sf::Vector2f size,TextureLoader textureLoader);
+	Lane(LaneType type, sf::Vector2f size,TextureLoader& textureLoader);
 	void render(sf::RenderWindow &window,int index);
 };
 

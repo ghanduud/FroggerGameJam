@@ -4,7 +4,7 @@
 
 
 
-Level::Level(TextureLoader textureLoader) {
+Level::Level(TextureLoader& textureLoader) {
 
     sf::Vector2f frogPosition(400, 80*6+40 );
 
