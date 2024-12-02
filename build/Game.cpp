@@ -1,11 +1,11 @@
-#include "PhysicsWorld.h"
+#include "Game.h"
 
 
-void PhysicsWorld::addMovingPlatform(MovingPlatform* particle) {
+void Game::addMovingPlatform(MovingPlatform* particle) {
 	this->particles.push_back(particle);
 }
 
-void PhysicsWorld::Update(float deltaTime) {
+void Game::Update(float deltaTime) {
     for (MovingPlatform* particle : this->particles) {
         particle->Update(deltaTime);
 

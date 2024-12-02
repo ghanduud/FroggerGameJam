@@ -8,7 +8,7 @@
 #include <ctime>
 #include "../build/MovingPlatform.h"
 #include "../build/Renderer.h"
-#include "../build/PhysicsWorld.h"
+#include "../build/Game.h"
 
 //pofo was here
 
@@ -21,7 +21,7 @@ int main() {
     sf::Time timePerFrame = sf::seconds(1.f / 60.f);
 
     Renderer r;
-    PhysicsWorld pw;
+    Game pw;
 
     // THIS IS NANOOO!!!!!
 

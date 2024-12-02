@@ -4,7 +4,7 @@
 
 using namespace std;
 
-class PhysicsWorld
+class Game
 {
 private:
 	list<MovingPlatform*> particles;
