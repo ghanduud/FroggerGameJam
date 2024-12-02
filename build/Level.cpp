@@ -15,16 +15,18 @@ Level::Level(TextureLoader& textureLoader) {
     for (int i = 0; i < 40; i++) {
         int r = rand() % 3;
         if (r==0) {
-            Lane lane(LaneType::resting, sf::Vector2f(800, 80),textureLoader);
+            Lane lane(LaneType::resting, sf::Vector2f(800, 80),textureLoader, i % 2 == 0);
             this->lanes.push_back(lane);
         }
         else if (r == 1) {
 
-            Lane lane(LaneType::road, sf::Vector2f(800, 80),textureLoader);
+            Lane lane(LaneType::road, sf::Vector2f(800, 80),textureLoader, i % 2 == 0);
             this->lanes.push_back(lane);
         }
         else if (r == 2) {
-            Lane lane(LaneType::water, sf::Vector2f(800, 80),textureLoader);
+
+            
+            Lane lane(LaneType::water, sf::Vector2f(800, 80),textureLoader, i % 2 == 0);
             this->lanes.push_back(lane);
         }
     }

@@ -6,4 +6,10 @@ TextureLoader::TextureLoader()
         std::cout << "Error loading land texture!" << std::endl;
     }
     landTexture.setRepeated(true);
+
+
+    if (!this->waterTexture.loadFromFile("../resources/frogger-Recovered.png")) {
+        std::cout << "Error loading land texture!" << std::endl;
+    }
+    waterTexture.setRepeated(true);
 }
