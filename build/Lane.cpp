@@ -7,7 +7,8 @@ Lane::Lane(LaneType type, sf::Vector2f size,TextureLoader textureLoader) {
     }*/
     landTexture = &(textureLoader.landTexture);
     landTexture->setRepeated(true);
-    landSprit.setTextureRect(sf::Rect(0, 0, 80, 80));
+    landSprit.setTextureRect(sf::Rect(0, 0, (int)(landTexture->getSize().x * size.x / size.y), (int)landTexture->getSize().y));
+    landSprit.setScale(sf::Vector2f(size.y/landTexture->getSize().x, size.y / landTexture->getSize().y));
     
 
     laneType = type;
