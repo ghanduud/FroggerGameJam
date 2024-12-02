@@ -60,7 +60,7 @@ void Level::update(float dt, Direction direction) {
 
         for (MovingPlatform& mp : lane.movingPlatform) {
 
-            if (frog.collider.checkcollistion(mp.collider)) {
+            if (frog.frogCollider.checkCollision(mp.platformCollider)) {
 
                 this->frog.isAlive = false;
                 this->isGameOver = true;
@@ -74,7 +74,7 @@ void Level::update(float dt, Direction direction) {
 void Level::renderMap(int sizeOfLanesInWindow, sf::RenderWindow& window) {
 {
 		for (int i = 0; i < sizeOfLanesInWindow;i++) {
-			lanes[start - 1 + i].render(window);
+			lanes[start - 1 + i].render(window, i);
 		}
 
 		frog.render(window);
