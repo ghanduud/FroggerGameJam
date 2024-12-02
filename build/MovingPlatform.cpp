@@ -10,13 +10,13 @@ MovingPlatform::MovingPlatform(sf::Vector2f position, sf::RectangleShape shape, 
     platformType = type;
 }
 
-void MovingPlatform::Update(float dt, sf::Vector2f speed) {
+void MovingPlatform::update(float dt, sf::Vector2f speed) {
     platformPostion += speed * dt;
     platformShape.setPosition(platformPostion);
     platformCollider.updatePosition(platformPostion);
 }
 
-void MovingPlatform::Render(sf::RenderWindow& window)
+void MovingPlatform::render(sf::RenderWindow& window)
 {
     window.draw(platformShape);
 }

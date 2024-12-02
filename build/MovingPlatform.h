@@ -20,7 +20,7 @@ public:
 
     MovingPlatform(sf::Vector2f position, sf::RectangleShape shape, sf::Vector2f size, PlatformType type);
 
-    void Update(float dt, sf::Vector2f speed);
+    void update(float dt, sf::Vector2f speed);
 
-    void Render(sf::RenderWindow& window);
+    void render(sf::RenderWindow& window);
 };
