@@ -1,5 +1,8 @@
 #pragma once
 #include "MovingPlatform.h"
+#include <iostream>
+#include <vector>
+#include <SFML/Graphics/RenderWindow.hpp>
 
 enum LaneType
 {
