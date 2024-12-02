@@ -1,6 +1,6 @@
 #include "Lane.h"
 
-Lane::Lane(LaneType type, sf::Vector2f size,TextureLoader textureLoader) {
+Lane::Lane(LaneType type, sf::Vector2f size,TextureLoader& textureLoader) {
     // Load texture
     /*if (!this->landTexture.loadFromFile("../resources/land.png")) {
         std::cerr << "Error loading texture!" << std::endl;
@@ -16,10 +16,10 @@ Lane::Lane(LaneType type, sf::Vector2f size,TextureLoader textureLoader) {
     
     switch (type) {
     case resting:
-        landSprit.setTexture(*landTexture);
+        laneTile.setFillColor(sf::Color::Green);
         break;
     case road:
-        laneTile.setFillColor(sf::Color::Color(60, 60, 60, 255));
+        laneTile.setTexture(&textureLoader.landTexture);
         break;
     case water:
         laneTile.setFillColor(sf::Color::Blue);
@@ -32,8 +32,8 @@ Lane::Lane(LaneType type, sf::Vector2f size,TextureLoader textureLoader) {
 
 void Lane::render(sf::RenderWindow& window, int index)
 {
-	landSprit.setPosition(sf::Vector2f(0, (9 - index) * laneTile.getSize().y));
+	//landSprit.setPosition(sf::Vector2f(0, (9 - index) * laneTile.getSize().y));
     laneTile.setPosition(sf::Vector2f(0, (9 - index) * laneTile.getSize().y));
-    window.draw(landSprit);
-    //window.draw(laneTile);
+    //window.draw(landSprit);
+    window.draw(laneTile);
 }

@@ -21,7 +21,7 @@ public:
 	bool isGameOver = false;
 	float gameOverTimer = 0.0f;
 
-	Level(TextureLoader textureLoader);
+	Level(TextureLoader& textureLoader);
 
 	void update(float dt, Direction direction);
 	void renderMap(int sizeOfLanesInWindow, sf::RenderWindow& window);
