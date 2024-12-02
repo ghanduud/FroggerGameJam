@@ -5,6 +5,7 @@
 #include <vector>
 #include "Lane.h"
 #include "Frog.h"
+#include "MovingPlatform.h"
 #include <SFML/Graphics/RenderWindow.hpp>
 
 

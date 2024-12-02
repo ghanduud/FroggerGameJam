@@ -1,5 +1,5 @@
 #include "Level.h"
-#include "MovingPlatform.h"
+
 
 
 
@@ -35,10 +35,10 @@ void Level::update(float dt, Direction direction) {
 
 
 
-    if (direction == UP) {
+    if (direction == Direction::UP) {
         start += 1;
     }
-    else if (direction == Down) {
+    else if (direction == Direction::DOWN) {
         start -= 1;
     }
 
@@ -62,7 +62,7 @@ void Level::update(float dt, Direction direction) {
 
             if (frog.collider.checkcollistion(mp.collider)) {
 
-                this->frog.death();
+                this->frog.isAlive = false;
                 this->isGameOver = true;
                 return;
 
