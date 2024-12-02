@@ -23,6 +23,7 @@ int main() {
     Renderer r;
     PhysicsWorld pw;
 
+    // THIS IS NANOOO!!!!!
 
     sf::CircleShape c1(30.f);
     c1.setFillColor(sf::Color::Red);
