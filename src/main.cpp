@@ -39,6 +39,7 @@ int main() {
 
     while (window.isOpen()) {
         sf::Event event;
+        direction = NONE;
         while (window.pollEvent(event)) {
             if (event.type == sf::Event::Closed) {
                 window.close();
@@ -46,19 +47,19 @@ int main() {
 
             if (event.key.code == sf::Keyboard::Up)
             {
-                
+                direction = UP;
             }
             if (event.key.code == sf::Keyboard::Down)
             {
-
+                direction = DOWN;
             }
             if (event.key.code == sf::Keyboard::Left)
             {
-
+                direction = LEFT;
             }
             if (event.key.code == sf::Keyboard::Right)
             {
-
+                direction = RIGHT;
             }
         }
 
