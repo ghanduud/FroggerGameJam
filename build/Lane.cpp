@@ -1,24 +1,29 @@
 #include "Lane.h"
 
-Lane::Lane(LaneType type, sf::Vector2f size)
-{
-	laneType = type;
-	laneTile.setSize(size);
-	switch (type)
-	{
-	case resting:
-		laneTile.setFillColor(sf::Color::Green);
-		break;
-	case road:
-		laneTile.setFillColor(sf::Color::Color(60, 60, 60, 255));
-		break;
-	case water:
-		laneTile.setFillColor(sf::Color::Blue);
-		break;
-	default:
-		break;
-	}
+Lane::Lane(LaneType type, sf::Vector2f size) {
+    // Load texture
+    if (!this->landTexture.loadFromFile("../resources/land.png")) {
+        std::cerr << "Error loading texture!" << std::endl;
+    }
+
+    laneType = type;
+    laneTile.setSize(size);
+
+    switch (type) {
+    case resting:
+        laneTile.setTexture(&landTexture);
+        break;
+    case road:
+        laneTile.setFillColor(sf::Color::Color(60, 60, 60, 255));
+        break;
+    case water:
+        laneTile.setFillColor(sf::Color::Blue);
+        break;
+    default:
+        break;
+    }
 }
+
 
 void Lane::render(sf::RenderWindow& window, int index)
 {
