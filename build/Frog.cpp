@@ -35,6 +35,11 @@ bool Frog::isDead()
 	return (!isAlive);
 }
 
+void Frog::death()
+{
+	this->isAlive = false;
+}
+
 bool Frog::isOutOfScreenBounds(int screenWidth, int screenHeight)
 {
 	if ((this->frogPosition.x - (0.5 * this->frogSize) <= 0) || // left bound
@@ -48,7 +53,7 @@ bool Frog::isOutOfScreenBounds(int screenWidth, int screenHeight)
 	return false;
 }
 
-void Frog::render(sf::RenderWindow window)
+void Frog::render(sf::RenderWindow& window)
 {
 	window.draw(this->frogShapeTest);
 }

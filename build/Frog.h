@@ -33,9 +33,10 @@ public:
 	Frog(sf::Vector2f Position, float laneHeight);
 	
 	bool isDead();
+	void death();
 	bool isOutOfScreenBounds(int screenWidth, int screenHeight);
 	void update(float deltaTime, Direction dir);
-	void render(sf::RenderWindow window);
+	void render(sf::RenderWindow& window);
 	void stretchingLegs(float deltaTime);
 
 };
