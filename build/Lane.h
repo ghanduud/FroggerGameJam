@@ -21,7 +21,7 @@ public:
 	sf::Sprite landSprit;
 	//sf::Texture* landTexture;
 
-	Lane(LaneType type, sf::Vector2f size,TextureLoader& textureLoader);
+	Lane(LaneType type, sf::Vector2f size,TextureLoader& textureLoader, bool isInverted);
 	void render(sf::RenderWindow &window,int index);
 };
 

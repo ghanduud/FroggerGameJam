@@ -5,6 +5,7 @@ class TextureLoader
 {
 public:
 	sf::Texture landTexture;
+	sf::Texture waterTexture;
 	TextureLoader();
 };
 
