@@ -1,5 +1,5 @@
 #pragma once
-#include "MovingOpject.h"
+#include "MovingPlatform.h"
 #include <list>
 
 using namespace std;
@@ -7,9 +7,9 @@ using namespace std;
 class PhysicsWorld
 {
 private:
-	list<MovingOpject*> particles;
+	list<MovingPlatform*> particles;
 public:
-	void addMovingOpject(MovingOpject* particle);
+	void addMovingPlatform(MovingPlatform* particle);
 	void Update(float deltaTime);;
 };
 

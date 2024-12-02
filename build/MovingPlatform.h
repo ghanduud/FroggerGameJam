@@ -3,19 +3,19 @@
 #include <SFML/Graphics.hpp>
 #include <stdexcept>
 
-class MovingOpject {
+class MovingPlatform {
 public:
     sf::Vector2f postion;
     sf::RectangleShape shape;
     AABBCollider rectangleCollider;
 
 
-    MovingOpject() {
+    MovingPlatform() {
         
     }
 
 
-    void MovingOpject::Update(float dt) {
+    void MovingPlatform::Update(float dt) {
 
     }
 };

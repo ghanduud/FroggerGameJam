@@ -6,7 +6,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
-#include "../build/MovingOpject.h"
+#include "../build/MovingPlatform.h"
 #include "../build/Renderer.h"
 #include "../build/PhysicsWorld.h"
 
