@@ -26,6 +26,7 @@ public:
 	sf::Sprite frogJumpingSprite;
 	sf::Sprite frogStandingSprite;
 
+	AABBCollider frogCollider;
 
 	// Methods
 

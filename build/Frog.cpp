@@ -17,6 +17,10 @@ Frog::Frog(sf::Vector2f Position, float laneHeight)
 	this->isJumping = false;
 	this->frogDirection = UP;
 
+	this->frogCollider.position = Position;
+	this->frogCollider.ul = Position - sf::Vector2f(this->frogSize, this->frogSize) / 2.f;
+	this->frogCollider.lr = Position + sf::Vector2f(this->frogSize, this->frogSize) / 2.f;
+
 	// testing frog
 	this->frogShapeTest.setFillColor(sf::Color::Green);
 	this->frogShapeTest.setOrigin(laneHeight, laneHeight);
@@ -107,6 +111,8 @@ void Frog::update(float deltaTime, Direction Dir)
 	}
 
 	this->frogShapeTest.setPosition(this->frogPosition);
+
+	this->frogCollider.updatePosition(this->frogPosition);
 
 	this->stretchingLegs(deltaTime);
 
