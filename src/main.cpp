@@ -9,21 +9,29 @@
 #include "../build/MovingPlatform.h"
 #include "../build/Renderer.h"
 #include "../build/Game.h"
+#include "../build/Level.h"
 
 //pofo was here
 
 int main() {
-    sf::RenderWindow window(sf::VideoMode(800, 600), "SFML Circle Collision", sf::Style::Default);
+    sf::RenderWindow window(sf::VideoMode(800, 800), "SFML Circle Collision", sf::Style::Default);
     window.setFramerateLimit(60);
     window.setKeyRepeatEnabled(false);
 
     sf::Clock clock;
     sf::Time timePerFrame = sf::seconds(1.f / 60.f);
 
-    Renderer r;
-    Game pw;
+    //Renderer r;
+    // 
+    // 
+    // 
+    // 
+    //Game pw;
 
-    // THIS IS NANOOO!!!!!
+
+
+    Level level1;
+
 
     
     Direction direction;
@@ -55,10 +63,11 @@ int main() {
         }
 
 
-        pw.Update(0.2);
-
- 
-        r.Render(window);
+        //pw.Update(0.2);
+        window.clear();
+        level1.renderMap(10,window);
+        window.display();
+        //r.Render(window);
     }
 
     return 0;

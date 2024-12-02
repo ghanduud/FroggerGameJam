@@ -1,5 +1,7 @@
 #pragma once
 
+#include <iostream>
+
 #include <SFML/Graphics.hpp>
 
 #include "AABBCollider.h"
@@ -22,9 +24,11 @@ public:
 
 	sf::RectangleShape frogShapeTest; // for testing on
 
+	sf::Texture frogJumpingTexture;
+	sf::Texture frogStandingTexture;
+
 	sf::Sprite frogSprite; // the used sprite
-	sf::Sprite frogJumpingSprite;
-	sf::Sprite frogStandingSprite;
+
 
 	AABBCollider frogCollider;
 
@@ -33,6 +37,7 @@ public:
 	Frog();
 	Frog(sf::Vector2f Position, float laneHeight);
 	
+	void getSprites();
 	bool isDead();
 	void death();
 	bool isOutOfScreenBounds(int screenWidth, int screenHeight);
