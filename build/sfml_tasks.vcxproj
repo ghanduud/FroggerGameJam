@@ -96,19 +96,19 @@
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp" />
     <ClCompile Include="Frog.cpp" />
-    <ClCompile Include="Game.cpp" />
     <ClCompile Include="Lane.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="MovingPlatform.cpp" />
     <ClCompile Include="Renderer.cpp" />
+    <ClCompile Include="Game.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AABBCollider.h" />
     <ClInclude Include="Frog.h" />
-    <ClInclude Include="Game.h" />
     <ClInclude Include="Lane.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="MovingPlatform.h" />
+    <ClInclude Include="Game.h" />
     <ClInclude Include="Renderer.h" />
   </ItemGroup>
   <ItemGroup>
