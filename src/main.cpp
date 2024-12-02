@@ -65,6 +65,7 @@ int main() {
             }
         }
 
+        level1.update(timePerFrame.asSeconds(), direction);
 
         //pw.Update(0.2);
         window.clear();
