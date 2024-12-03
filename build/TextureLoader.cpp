@@ -2,13 +2,13 @@
 
 TextureLoader::TextureLoader()
 {
-    if (!this->landTexture.loadFromFile("../resources/land.png")) {
+    if (!this->landTexture.loadFromFile("../resources/land4.png")) {
         std::cout << "Error loading land texture!" << std::endl;
     }
     landTexture.setRepeated(true);
 
 
-    if (!this->waterTexture.loadFromFile("../resources/frogger-Recovered.png")) {
+    if (!this->waterTexture.loadFromFile("../resources/dfcvs.png")) {
         std::cout << "Error loading land texture!" << std::endl;
     }
     waterTexture.setRepeated(true);
@@ -25,12 +25,12 @@ TextureLoader::TextureLoader()
     restTexture.setRepeated(true);
 
     // frog stuff
-    if (!this->frogJumpingTexture.loadFromFile("../resources/frog.png")) { 
+    if (!this->frogJumpingTexture.loadFromFile("../resources/fire-frogger12.png")) { 
         std::cerr << "Failed to load image.png from ghandy" << std::endl;
         return;
     }
 
-    if (!frogStandingTexture.loadFromFile("../resources/frog.png")) {
+    if (!frogStandingTexture.loadFromFile("../resources/fire-frogger12.png")) {
         std::cerr << "Failed to load image.png" << std::endl;
         return;
     }

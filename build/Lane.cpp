@@ -15,6 +15,11 @@ Lane::Lane(LaneType type, sf::Vector2f size, TextureLoader& textureLoader, bool 
         break;
     case road:
         this->setSpritToLane(textureLoader.landTexture,size,0, textureLoader.landTexture);
+        for (int i = 0;i < 7;i++) {
+            sf::RectangleShape shape = this->setObsticalShape(i);
+            MovingPlatform platform(landSprit.getPosition(),shape, shape.getSize(), Obstical);
+            this->movingPlatforms.push_back(platform);
+        }
         break;
     case water:
         this->setSpritToLane(textureLoader.waterTexture,size,1, textureLoader.landTexture);
@@ -43,7 +48,16 @@ void Lane::render(sf::RenderWindow& window, int index)
 	landSprit.setPosition(sf::Vector2f(0, (9 - index) * 80));
     //laneTile.setPosition(sf::Vector2f(0, (9 - index) * laneTile.getSize().y));
     window.draw(landSprit);
+
+    
     //window.draw(laneTile);
+}
+
+void Lane::renderObsticals(sf::RenderWindow& window)
+{
+for (MovingPlatform mp : this->movingPlatforms) {
+        window.draw(mp.platformShape);
+    }
 }
 
 
@@ -51,14 +65,8 @@ void Lane::render(sf::RenderWindow& window, int index)
 
 void Lane::setSpritToLane(sf::Texture& texture, sf::Vector2f size, bool isWater, sf::Texture& landTexture) {
 
-    if (isWater) {
-        this->landSprit.setTextureRect(sf::IntRect(0, 0,
-            (int)landTexture.getSize().x * size.x / size.y,
-            (int)landTexture.getSize().y));
-        this->landSprit.setScale(sf::Vector2f(size.y / landTexture.getSize().x, size.y / landTexture.getSize().y));
-        landSprit.setTexture(texture);
-    }
-    else {
+
+
 
 
 
@@ -67,5 +75,29 @@ void Lane::setSpritToLane(sf::Texture& texture, sf::Vector2f size, bool isWater,
             (int)texture.getSize().y));
         this->landSprit.setScale(sf::Vector2f(size.y / texture.getSize().x, size.y / texture.getSize().y));
         landSprit.setTexture(texture);
+
+}
+
+
+sf::RectangleShape Lane::setObsticalShape(int number) {
+    if (number % 3 == 0) {
+        return sf::RectangleShape(sf::Vector2f(80 * 3, 80));
+    }
+    else if (number % 2 == 0) {
+        return sf::RectangleShape(sf::Vector2f(80 * 2, 80));
+    }
+    else {
+        return sf::RectangleShape(sf::Vector2f(80, 80));
+    }
+}
+
+
+
+
+
+void Lane::update(float deltaTime) {
+    for (MovingPlatform mp : this->movingPlatforms) {
+        mp.platformPostion = sf::Vector2f(mp.platformShape.getPosition().x, landSprit.getPosition().y);
+        mp.update(deltaTime, sf::Vector2f(0,laneSpeed));
     }
 }

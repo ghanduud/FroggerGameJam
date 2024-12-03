@@ -2,6 +2,7 @@
 #include "AABBCollider.h"
 #include <SFML/Graphics.hpp>
 #include <stdexcept>
+#include "Frog.h"
 
 enum PlatformType
 {
@@ -11,16 +12,15 @@ enum PlatformType
 
 class MovingPlatform {
 public:
-    sf::Vector2f platformPostion;
     sf::RectangleShape platformShape;
     AABBCollider platformCollider;
-    sf::Vector2f platformSize;
+    int platformSize;
     PlatformType platformType;
 
 
-    MovingPlatform(sf::Vector2f position, sf::RectangleShape shape, sf::Vector2f size, PlatformType type);
+    MovingPlatform(int size, PlatformType type, Direction direction);
 
-    void update(float dt, sf::Vector2f speed);
+    void update(float dt, float speed, float laneYPosition);
 
     void render(sf::RenderWindow& window);
 };

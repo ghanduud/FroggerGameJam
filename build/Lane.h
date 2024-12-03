@@ -23,10 +23,14 @@ public:
 	sf::RectangleShape laneTile;
 	sf::Sprite landSprit;
 	Direction laneDirection;
+	float laneSpeed;
 	//sf::Texture* landTexture;
 
 	Lane(LaneType type, sf::Vector2f size,TextureLoader& textureLoader, bool isInverted);
 	void render(sf::RenderWindow &window,int index);
+	void renderObsticals(sf::RenderWindow &window);
 	void setSpritToLane(sf::Texture& texture, sf::Vector2f size, bool isWater, sf::Texture& landTexture);
+	sf::RectangleShape setObsticalShape(int number);
+	void update(float deltaTime);
 };
 
