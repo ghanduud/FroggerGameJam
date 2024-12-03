@@ -26,7 +26,7 @@ public:
 	Direction laneDirection;
 	//sf::Texture* landTexture;
 
-	Lane(LaneType type, sf::Vector2f size,TextureLoader& textureLoader, bool isInverted);
+	Lane(LaneType type, sf::Vector2f size, TextureLoader& textureLoader, bool isInverted, float speed);
 	void render(sf::RenderWindow &window,int index);
 	void renderObsticals(sf::RenderWindow &window);
 	void setSpritToLane(sf::Texture& texture, sf::Vector2f size, bool isWater, sf::Texture& landTexture);

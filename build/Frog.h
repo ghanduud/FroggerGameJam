@@ -22,6 +22,8 @@ public:
 	bool isJumping;
 	Direction frogDirection;
 
+	float laneSpeed = 0;
+
 	sf::RectangleShape frogShapeTest; // for testing on
 
 	
@@ -43,6 +45,7 @@ public:
 	void update(float deltaTime, Direction dir);
 	void render(sf::RenderWindow& window);
 	void stretchingLegs(float deltaTime);
+	void frogOnWater(float speed, float dt);
 
 };
 

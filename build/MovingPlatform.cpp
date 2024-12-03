@@ -7,6 +7,8 @@ MovingPlatform::MovingPlatform(int size, PlatformType type,Direction direction) 
     platformShape.setPosition(0, 700);
     platformSize = size;
     platformType = type;
+    this->platformCollider.ul = sf::Vector2f(0, 0);
+    this->platformCollider.lr = sf::Vector2f(size * 80, 80);
 }
 
 void MovingPlatform::update(float dt, float speed,float laneYPosition) {

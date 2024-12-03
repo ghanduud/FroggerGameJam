@@ -15,39 +15,39 @@ Level::Level(TextureLoader& textureLoader) {
     this->frogCurrentLane = start + 4;
 
     for (int i = 0; i < 9; i++) {
-        Lane lane(LaneType::resting, sf::Vector2f(800, 80),textureLoader, i % 2 == 0);
+        Lane lane(LaneType::resting, sf::Vector2f(800, 80),textureLoader, i % 2 == 0, 10);
         this->lanes.push_back(lane);
 
     }
-    Lane lane1(LaneType::BLOCK, sf::Vector2f(800, 80), textureLoader, 0);
+    Lane lane1(LaneType::BLOCK, sf::Vector2f(800, 80), textureLoader, 0, 20);
     this->lanes.push_back(lane1);
 
 
-    Lane lane2(LaneType::resting, sf::Vector2f(800, 80), textureLoader, 0);
+    Lane lane2(LaneType::resting, sf::Vector2f(800, 80), textureLoader, 0,5);
     this->lanes.push_back(lane2);
-    Lane lane3(LaneType::resting, sf::Vector2f(800, 80), textureLoader, 0);
+    Lane lane3(LaneType::resting, sf::Vector2f(800, 80), textureLoader, 0, 9);
     this->lanes.push_back(lane3);
-    Lane lane4(LaneType::resting, sf::Vector2f(800, 80), textureLoader, 0);
+    Lane lane4(LaneType::resting, sf::Vector2f(800, 80), textureLoader, 14,16);
     this->lanes.push_back(lane4);
-    Lane lane5(LaneType::resting, sf::Vector2f(800, 80), textureLoader, 0);
+    Lane lane5(LaneType::resting, sf::Vector2f(800, 80), textureLoader, 0,20);
     this->lanes.push_back(lane5);
 
 
     for (int i = 0; i < 40; i++) {
         int r = rand() % 3;
         if (r == 0) {
-            Lane lane(LaneType::resting, sf::Vector2f(800, 80), textureLoader, i % 2 == 0);
+            Lane lane(LaneType::resting, sf::Vector2f(800, 80), textureLoader, i % 2 == 0,15);
             this->lanes.push_back(lane);
         }
         else if (r == 1) {
 
-            Lane lane(LaneType::road, sf::Vector2f(800, 80), textureLoader, i % 2 == 0);
+            Lane lane(LaneType::road, sf::Vector2f(800, 80), textureLoader, i % 2 == 0,18);
             this->lanes.push_back(lane);
         }
         else if (r == 2) {
 
 
-            Lane lane(LaneType::water, sf::Vector2f(800, 80), textureLoader, i % 2 == 0);
+            Lane lane(LaneType::water, sf::Vector2f(800, 80), textureLoader, i % 2 == 0,17);
             this->lanes.push_back(lane);
         }
     }
@@ -109,6 +109,14 @@ void Level::update(float dt, Direction direction) {
 
     if (this->lanes[this->frogCurrentLane].laneType == LaneType::water) {
         inWater = true;
+
+        float speed = this->lanes[this->frogCurrentLane].laneSpeed;
+        if (this->lanes[this->frogCurrentLane].laneDirection == LEFT) {
+            speed *= -1;
+        }
+
+        this->frog.frogOnWater(speed, dt);
+
     }
 
     for (Lane& lane : this->lanes) {
@@ -123,6 +131,8 @@ void Level::update(float dt, Direction direction) {
                 
 
                 if (this->lanes[this->frogCurrentLane].laneType == LaneType::road) {
+
+                    std::cout << "die" << std::endl;
                     this->frog.isAlive = false;
                     this->isGameOver = true;
                     return;
@@ -134,6 +144,8 @@ void Level::update(float dt, Direction direction) {
         }
     }
     if (inWater) {
+
+        std::cout << "die" << std::endl;
         this->frog.isAlive = false;
         this->isGameOver = true;
         return;

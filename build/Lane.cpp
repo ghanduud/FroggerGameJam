@@ -1,8 +1,8 @@
 #include "Lane.h"
 
-Lane::Lane(LaneType type, sf::Vector2f size, TextureLoader& textureLoader, bool isInverted) {
+Lane::Lane(LaneType type, sf::Vector2f size, TextureLoader& textureLoader, bool isInverted, float speed) {
     
-
+    this->laneSpeed = speed;
     laneType = type;
     laneTile.setSize(size);
     laneDirection = LEFT;
@@ -22,6 +22,10 @@ Lane::Lane(LaneType type, sf::Vector2f size, TextureLoader& textureLoader, bool 
         break;
     case water:
         this->setSpritToLane(textureLoader.waterTexture,size,1, textureLoader.landTexture);
+        for (int i = 0;i < 7;i++) {
+            MovingPlatform platform(i % 3 + 1, Hopper, laneDirection);
+            this->movingPlatforms.push_back(platform);
+        }
         if (isInverted) {
             std::cout << isInverted << std::endl;
             sf::Vector2f currentScale = landSprit.getScale();
@@ -98,6 +102,6 @@ void Lane::update(float deltaTime,int start,int index) {
     int Ypos = 800 + 80 * (start - index - 1);
     for (int i = 0; i < movingPlatforms.size(); i++)
     {
-        movingPlatforms[i].update(deltaTime, 0, Ypos);
+        movingPlatforms[i].update(deltaTime, laneSpeed, Ypos);
     }
 }

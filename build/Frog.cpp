@@ -146,3 +146,18 @@ void Frog::stretchingLegs(float deltaTime)
 }
 
 
+
+void Frog::frogOnWater(float speed ,float dt) {
+	sf::Vector2f newPosition = sf::Vector2f(this->frogPosition.x - dt * speed, frogPosition.y);
+	if (!isOutOfScreenBounds(newPosition, 800, 800)) frogPosition = newPosition;
+
+	// updating the frog AABB collider
+	this->frogCollider.updatePosition(this->frogPosition);
+
+	// calling the function that makes the frog jump animation
+	this->stretchingLegs(dt);
+
+	// updating the sprite position
+	this->frogSprite.setPosition(this->frogPosition);
+}
+
