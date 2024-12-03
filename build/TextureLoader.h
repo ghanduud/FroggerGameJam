@@ -8,6 +8,7 @@ public:
 	sf::Texture waterTexture;
 
 	sf::Texture blockTexture;
+	sf::Texture restTexture;
 
 	// frog stuff
 	sf::Texture frogJumpingTexture;

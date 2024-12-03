@@ -8,7 +8,7 @@ Lane::Lane(LaneType type, sf::Vector2f size, TextureLoader& textureLoader, bool 
     
     switch (type) {
     case resting:
-        this->setSpritToLane(textureLoader.landTexture,size,0, textureLoader.landTexture);
+        this->setSpritToLane(textureLoader.restTexture,size,0, textureLoader.landTexture);
         break;
     case road:
         this->setSpritToLane(textureLoader.landTexture,size,0, textureLoader.landTexture);
