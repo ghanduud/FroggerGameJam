@@ -12,4 +12,16 @@ TextureLoader::TextureLoader()
         std::cout << "Error loading land texture!" << std::endl;
     }
     waterTexture.setRepeated(true);
+
+
+    // frog stuff
+    if (!frogJumpingTexture.loadFromFile("image.png")) { //--------------------change image here
+        std::cerr << "Failed to load image.png " << std::endl;
+        return;
+    }
+
+    if (!frogStandingTexture.loadFromFile("image.png")) { //-----------------------change image here too
+        std::cerr << "Failed to load image.png" << std::endl;
+        return;
+    }
 }

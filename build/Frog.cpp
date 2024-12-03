@@ -4,7 +4,7 @@ Frog::Frog()
 {
 }
 
-Frog::Frog(sf::Vector2f Position, float laneHeight)
+Frog::Frog(sf::Vector2f Position, float laneHeight, TextureLoader& textureLoader, sf::Vector2f size)
 {
 
 	// set the frog to the middle of the 5th lane
@@ -30,31 +30,19 @@ Frog::Frog(sf::Vector2f Position, float laneHeight)
 
 
 	// Initialize sprite
-	this->getSprites();
+	this->frogSprite.setTexture(textureLoader.frogStandingTexture);
 	this->frogSprite.setPosition(Position);
 	this->frogSprite.setOrigin(laneHeight / 2, laneHeight / 2);
+	this->frogSprite.setScale(sf::Vector2f(size.y / textureLoader.frogStandingTexture.getSize().x, size.y / textureLoader.frogStandingTexture.getSize().y));
 
-
+	
+	
 
 	//sf::Sprite frogSprite; // the used sprite
 	//sf::Sprite frogJumpingSprite;
 	//sf::Sprite frogStandingSprite;
 }
 
-void Frog::getSprites()
-{
-	if (!frogJumpingTexture.loadFromFile("image.png")) { //--------------------change image here
-		std::cerr << "Failed to load image.png" << std::endl;
-		return;
-	}
-
-	if (!frogStandingTexture.loadFromFile("image.png")) { //-----------------------change image here too
-		std::cerr << "Failed to load image.png" << std::endl;
-		return;
-	}
-
-	this->frogSprite.setTexture(frogStandingTexture);
-}
 
 bool Frog::isDead()
 {
