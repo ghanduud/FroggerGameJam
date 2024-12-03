@@ -31,10 +31,10 @@ Frog::Frog(sf::Vector2f Position, float laneHeight, TextureLoader& textureLoader
 
 	// Initialize sprite
 	this->frogSprite.setTexture(textureLoader.frogStandingTexture);
-	this->frogSprite.setOrigin(textureLoader.landTexture.getSize().x / 2, textureLoader.landTexture.getSize().y / 2);
+	this->frogSprite.setOrigin(textureLoader.frogStandingTexture.getSize().x / 2, textureLoader.frogStandingTexture.getSize().y / 2);
 	this->frogSprite.setTextureRect(sf::IntRect(0, 0,
-		(int)textureLoader.landTexture.getSize().x,
-		(int)textureLoader.landTexture.getSize().y));
+		(int)textureLoader.frogStandingTexture.getSize().x,
+		(int)textureLoader.frogStandingTexture.getSize().y));
 	this->frogSprite.setPosition(Position);
 	this->frogSprite.setScale(sf::Vector2f(size.y / textureLoader.frogStandingTexture.getSize().x, size.y / textureLoader.frogStandingTexture.getSize().y));
 

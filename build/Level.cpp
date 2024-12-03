@@ -103,7 +103,7 @@ void Level::update(float dt, Direction direction) {
 
 
     for (Lane& lane : this->lanes) {
-    //lane.update(dt);
+    lane.update(dt);
     }
 
     if (this->lanes[this->frogCurrentLane].laneType == LaneType::water) {
@@ -145,6 +145,9 @@ void Level::renderMap(int sizeOfLanesInWindow, sf::RenderWindow& window)
 		for (int i = 0; i < sizeOfLanesInWindow;i++) {
 			lanes[start + i].render(window, i);
 		}
+        for (int i = 0; i < sizeOfLanesInWindow;i++) {
+            lanes[start + i].renderObsticals(window);
+        }
 		frog.render(window);
 
 }
