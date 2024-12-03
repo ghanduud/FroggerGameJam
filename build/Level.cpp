@@ -52,7 +52,27 @@ Level::Level(TextureLoader& textureLoader) {
         }
     }
 
+    Lane lane8(LaneType::END, sf::Vector2f(800, 80), textureLoader, 0, 0);
+    this->lanes.push_back(lane8);
 
+    for (int i = 0; i < 40; i++) {
+        int r = rand() % 3;
+        if (r == 0) {
+            Lane lane(LaneType::resting, sf::Vector2f(800, 80), textureLoader, i % 2 == 0, 15);
+            this->lanes.push_back(lane);
+        }
+        else if (r == 1) {
+
+            Lane lane(LaneType::road, sf::Vector2f(800, 80), textureLoader, i % 2 == 0, 18);
+            this->lanes.push_back(lane);
+        }
+        else if (r == 2) {
+
+
+            Lane lane(LaneType::water, sf::Vector2f(800, 80), textureLoader, i % 2 == 0, 17);
+            this->lanes.push_back(lane);
+        }
+    }
 
 }
 
@@ -116,6 +136,12 @@ void Level::update(float dt, Direction direction) {
         }
 
         this->frog.frogOnWater(speed, dt);
+
+    }
+
+    if (this->lanes[this->frogCurrentLane].laneType == LaneType::END) {
+        std::cout << "win the game" << std::endl;
+        return;
 
     }
 
