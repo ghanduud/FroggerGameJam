@@ -16,8 +16,7 @@ Lane::Lane(LaneType type, sf::Vector2f size, TextureLoader& textureLoader, bool 
     case road:
         this->setSpritToLane(textureLoader.landTexture,size,0, textureLoader.landTexture);
         for (int i = 0;i < 7;i++) {
-            sf::RectangleShape shape = this->setObsticalShape(i);
-            MovingPlatform platform(landSprit.getPosition(),shape, shape.getSize(), Obstical);
+            MovingPlatform platform(i%3+1, Obstical,laneDirection);
             this->movingPlatforms.push_back(platform);
         }
         break;
@@ -55,7 +54,7 @@ void Lane::render(sf::RenderWindow& window, int index)
 
 void Lane::renderObsticals(sf::RenderWindow& window)
 {
-for (MovingPlatform mp : this->movingPlatforms) {
+    for (MovingPlatform mp : this->movingPlatforms) {
         window.draw(mp.platformShape);
     }
 }
@@ -97,7 +96,6 @@ sf::RectangleShape Lane::setObsticalShape(int number) {
 
 void Lane::update(float deltaTime) {
     for (MovingPlatform mp : this->movingPlatforms) {
-        mp.platformPostion = sf::Vector2f(mp.platformShape.getPosition().x, landSprit.getPosition().y);
-        mp.update(deltaTime, sf::Vector2f(0,laneSpeed));
+        mp.update(deltaTime, laneSpeed, landSprit.getPosition().y);
     }
 }
