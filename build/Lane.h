@@ -27,5 +27,6 @@ public:
 
 	Lane(LaneType type, sf::Vector2f size,TextureLoader& textureLoader, bool isInverted);
 	void render(sf::RenderWindow &window,int index);
+	void setSpritToLane(sf::Texture& texture, sf::Vector2f size, bool isWater, sf::Texture& landTexture);
 };
 

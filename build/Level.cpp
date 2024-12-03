@@ -6,7 +6,7 @@
 
 Level::Level(TextureLoader& textureLoader) {
 
-    sf::Vector2f frogPosition(400, 80*6+40);
+    sf::Vector2f frogPosition(440, 80*6+40);
 
 
     Frog frog(frogPosition, 80, textureLoader, sf::Vector2f(80, 80));
@@ -29,6 +29,8 @@ Level::Level(TextureLoader& textureLoader) {
     this->lanes.push_back(lane3);
     Lane lane4(LaneType::resting, sf::Vector2f(800, 80), textureLoader, 0);
     this->lanes.push_back(lane4);
+    Lane lane5(LaneType::resting, sf::Vector2f(800, 80), textureLoader, 0);
+    this->lanes.push_back(lane5);
 
 
     for (int i = 0; i < 40; i++) {
@@ -63,7 +65,7 @@ void Level::update(float dt, Direction direction) {
 
     bool inWater = false;
 
-    if (this->isGameOver) {
+    /*if (this->isGameOver) {
         gameOverTimer += dt;
         if (this->gameOverTimer >= 2.0f) {
 
@@ -75,7 +77,7 @@ void Level::update(float dt, Direction direction) {
             this->gameOverTimer = 0.0f; 
         }
         return;
-    }
+    }*/
 
     std::cout << this->frogCurrentLane << std::endl;
 
@@ -104,9 +106,9 @@ void Level::update(float dt, Direction direction) {
     //lane.update(dt);
     }
 
-   /* if (this->lanes[this->frogCurrentLane].laneType == LaneType::water) {
+    if (this->lanes[this->frogCurrentLane].laneType == LaneType::water) {
         inWater = true;
-    }*/
+    }
 
     for (Lane& lane : this->lanes) {
 

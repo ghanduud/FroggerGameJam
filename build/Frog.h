@@ -39,7 +39,7 @@ public:
 	//void getSprites();
 	bool isDead();
 	void death();
-	bool isOutOfScreenBounds(int screenWidth, int screenHeight);
+	bool isOutOfScreenBounds(sf::Vector2f newPosition, int screenWidth, int screenHeight);
 	void update(float deltaTime, Direction dir);
 	void render(sf::RenderWindow& window);
 	void stretchingLegs(float deltaTime);
