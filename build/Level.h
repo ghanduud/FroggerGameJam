@@ -15,6 +15,7 @@ class Level
 public:
 	Frog frog;
 	std::vector <Lane> lanes;
+	int frogCurrentLane;
 	int score = 0;
 	int start = 11;
 
