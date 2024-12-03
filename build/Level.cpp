@@ -15,39 +15,39 @@ Level::Level(TextureLoader& textureLoader) {
     this->frogCurrentLane = start + 4;
 
     for (int i = 0; i < 9; i++) {
-        Lane lane(LaneType::resting, sf::Vector2f(800, 80),textureLoader, i % 2 == 0, 10);
+        Lane lane(LaneType::resting, sf::Vector2f(800, 80),textureLoader, 0, 10);
         this->lanes.push_back(lane);
 
     }
-    Lane lane1(LaneType::BLOCK, sf::Vector2f(800, 80), textureLoader, 0, 20);
+    Lane lane1(LaneType::BLOCK, sf::Vector2f(800, 80), textureLoader, 0, 50);
     this->lanes.push_back(lane1);
 
 
-    Lane lane2(LaneType::resting, sf::Vector2f(800, 80), textureLoader, 0,5);
+    Lane lane2(LaneType::resting, sf::Vector2f(800, 80), textureLoader, 0,60);
     this->lanes.push_back(lane2);
-    Lane lane3(LaneType::resting, sf::Vector2f(800, 80), textureLoader, 0, 9);
+    Lane lane3(LaneType::resting, sf::Vector2f(800, 80), textureLoader, 0, 70);
     this->lanes.push_back(lane3);
-    Lane lane4(LaneType::resting, sf::Vector2f(800, 80), textureLoader, 14,16);
+    Lane lane4(LaneType::resting, sf::Vector2f(800, 80), textureLoader, 0,80);
     this->lanes.push_back(lane4);
-    Lane lane5(LaneType::resting, sf::Vector2f(800, 80), textureLoader, 0,20);
+    Lane lane5(LaneType::resting, sf::Vector2f(800, 80), textureLoader, 0,90);
     this->lanes.push_back(lane5);
 
 
     for (int i = 0; i < 40; i++) {
         int r = rand() % 3;
         if (r == 0) {
-            Lane lane(LaneType::resting, sf::Vector2f(800, 80), textureLoader, i % 2 == 0,15);
+            Lane lane(LaneType::resting, sf::Vector2f(800, 80), textureLoader, i % 2 == 0,70+(rand()%11)*5);
             this->lanes.push_back(lane);
         }
         else if (r == 1) {
 
-            Lane lane(LaneType::road, sf::Vector2f(800, 80), textureLoader, i % 2 == 0,18);
+            Lane lane(LaneType::road, sf::Vector2f(800, 80), textureLoader, i % 2 == 0, 70 + (rand() % 11) * 5);
             this->lanes.push_back(lane);
         }
         else if (r == 2) {
 
 
-            Lane lane(LaneType::water, sf::Vector2f(800, 80), textureLoader, i % 2 == 0,17);
+            Lane lane(LaneType::water, sf::Vector2f(800, 80), textureLoader, i % 2 == 0, 70 + (rand() % 11) * 5);
             this->lanes.push_back(lane);
         }
     }

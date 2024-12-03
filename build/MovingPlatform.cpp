@@ -1,4 +1,5 @@
 #include "MovingPlatform.h"
+#include "math.h"
 
 MovingPlatform::MovingPlatform(int size, PlatformType type,Direction direction,int x) {
     platformShape.setSize(sf::Vector2f(80 * size, 80));
@@ -16,9 +17,15 @@ MovingPlatform::MovingPlatform(int size, PlatformType type,Direction direction,i
     }
 }
 
-void MovingPlatform::update(float dt, float speed,float laneYPosition) {
-
-    platformShape.setPosition(sf::Vector2f(platformShape.getPosition().x + (speed * directionOfPlatform) * dt, laneYPosition));
+void MovingPlatform::update(float dt, float speed,float laneYPosition,float totalsize) {
+    if (speed == 0)return;
+    float newXPosition = platformShape.getPosition().x + (speed * directionOfPlatform) * dt;
+    if (speed>0&&newXPosition>totalsize-platformSize*80) newXPosition = -platformSize*80;
+    else if(speed<0&&newXPosition<800-totalsize){
+        newXPosition = 800;
+    }
+    //std::cout << newXPosition << "\n";
+    platformShape.setPosition(sf::Vector2f(newXPosition, laneYPosition));
     platformCollider.updatePosition(platformShape.getPosition());
 }
 

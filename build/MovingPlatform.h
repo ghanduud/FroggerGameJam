@@ -21,7 +21,7 @@ public:
 
     MovingPlatform(int size, PlatformType type, Direction direction,int x);
 
-    void update(float dt, float speed, float laneYPosition);
+    void update(float dt, float speed, float laneYPosition, float totalsize);
 
     void render(sf::RenderWindow& window);
 };
