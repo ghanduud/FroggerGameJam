@@ -31,7 +31,7 @@ Frog::Frog(sf::Vector2f Position, float laneHeight, TextureLoader& textureLoader
 
 	// Initialize sprite
 	this->frogSprite.setTexture(textureLoader.frogStandingTexture);
-	this->frogSprite.setOrigin(laneHeight / 2, laneHeight / 2);
+	this->frogSprite.setOrigin(400, 400);
 	this->frogSprite.setPosition(Position);
 	this->frogSprite.setScale(sf::Vector2f(size.y / textureLoader.frogStandingTexture.getSize().x, size.y / textureLoader.frogStandingTexture.getSize().y));
 
@@ -85,9 +85,10 @@ void Frog::update(float deltaTime, Direction Dir)
 		//this->frogPosition.y -= deltaTime * frogVelocity;
 
 		this->frogDirection = UP;
+	
 		
-		if (this->frogShapeTest.getRotation() != 270)
-			this->frogShapeTest.setRotation(270);
+		if (this->frogSprite.getRotation() != 0)
+			this->frogSprite.setRotation(0);
 
 	}
 	if (Dir == Direction::DOWN) 
@@ -96,8 +97,8 @@ void Frog::update(float deltaTime, Direction Dir)
 
 		this->frogDirection = DOWN;
 
-		if (this->frogShapeTest.getRotation() != 90)
-			this->frogShapeTest.setRotation(90);
+		if (this->frogSprite.getRotation() != 180)
+			this->frogSprite.setRotation(180);
 
 	}
 	if (Dir == Direction::LEFT) 
@@ -106,8 +107,8 @@ void Frog::update(float deltaTime, Direction Dir)
 
 		this->frogDirection = LEFT;
 
-		if (this->frogShapeTest.getRotation() != 180)
-			this->frogShapeTest.setRotation(180);
+		if (this->frogSprite.getRotation() != 270)
+			this->frogSprite.setRotation(270);
 
 	}
 	if (Dir == Direction::RIGHT) 
@@ -116,8 +117,8 @@ void Frog::update(float deltaTime, Direction Dir)
 
 		this->frogDirection = RIGHT;
 
-		if (this->frogShapeTest.getRotation() != 0)
-			this->frogShapeTest.setRotation(0);
+		if (this->frogSprite.getRotation() != 90)
+			this->frogSprite.setRotation(90);
 
 	}
 
