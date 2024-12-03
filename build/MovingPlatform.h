@@ -16,6 +16,7 @@ public:
     AABBCollider platformCollider;
     int platformSize;
     PlatformType platformType;
+    int directionOfPlatform;
 
 
     MovingPlatform(int size, PlatformType type, Direction direction);
