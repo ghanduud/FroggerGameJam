@@ -19,14 +19,17 @@ Lane::Lane(LaneType type, sf::Vector2f size, TextureLoader& textureLoader, bool 
         break;
     case water:
         landSprit.setTexture(textureLoader.waterTexture);
-        if (!isInverted) {
-            // Invert vertically (flip y-axis)
+        if (isInverted) {
             sf::Vector2f currentScale = landSprit.getScale();
-            landSprit.setScale(currentScale.x, -currentScale.y); // Flip along y-axis
-
-            // Adjust origin to keep sprite aligned
+            landSprit.setScale(currentScale.x, -currentScale.y);
             landSprit.setOrigin(0, landSprit.getTextureRect().height);
         }
+        break;
+    case BLOCK:
+        landSprit.setTexture(textureLoader.waterTexture);
+        break;
+    case END:
+        landSprit.setTexture(textureLoader.waterTexture);
         break;
     default:
         break;

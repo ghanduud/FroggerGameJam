@@ -9,7 +9,9 @@ enum LaneType
 {
 	resting,
 	road,
-	water
+	water,
+	END,
+	BLOCK,
 };
 
 class Lane
