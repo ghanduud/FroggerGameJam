@@ -3,14 +3,23 @@
 
 MovingPlatform::MovingPlatform(int size, PlatformType type,Direction direction,int x, TextureLoader& textureLoader) {
     platformShape.setSize(sf::Vector2f(80 * size, 80));
-    if(type==Hopper) platformShape.setTexture(&textureLoader.bigSnakeTexture);
-    if (type == Obstical) platformShape.setTexture(&textureLoader.bigSnakeTexture);
+    if(type==Hopper) platformShape.setTexture(&textureLoader.trunkTexture);
+    {
+        this->platformCollider.ul = sf::Vector2f(0, 40);
+        this->platformCollider.lr = sf::Vector2f(size * 80, 75);
+
+    }
+    if (type == Obstical) {
+        platformShape.setTexture(&textureLoader.bigSnakeTexture);
+        this->platformCollider.ul = sf::Vector2f(20, 20);
+        this->platformCollider.lr = sf::Vector2f(size * 60, 60);
+    }
+
     if (direction == RIGHT) platformShape.setPosition(x-platformShape.getSize().x, 0);
     if (direction == LEFT) platformShape.setPosition(800+x, 0);
     platformSize = size;
     platformType = type;
-    this->platformCollider.ul = sf::Vector2f(0, 0);
-    this->platformCollider.lr = sf::Vector2f(size * 80, 80);
+ 
     if (direction == LEFT) {
         directionOfPlatform = -1;
     }

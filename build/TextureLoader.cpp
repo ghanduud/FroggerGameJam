@@ -45,4 +45,8 @@ TextureLoader::TextureLoader()
         std::cerr << "Failed to load image.png" << std::endl;
         return;
     }
+    if (!this->trunkTexture.loadFromFile("../resources/wood-trunk.png")) {
+        std::cerr << "Failed to load image.png" << std::endl;
+        return;
+    }
 }

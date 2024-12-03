@@ -5,76 +5,69 @@
 
 
 Level::Level(TextureLoader& textureLoader) {
-
-    sf::Vector2f frogPosition(440, 80*6+40);
-
-
+    // Set initial frog position
+    sf::Vector2f frogPosition(440, 80 * 6 + 40);
     Frog frog(frogPosition, 80, textureLoader, sf::Vector2f(80, 80));
     this->frog = frog;
-
     this->frogCurrentLane = start + 4;
 
-    for (int i = 0; i < 9; i++) {
-        Lane lane(LaneType::resting, sf::Vector2f(800, 80),textureLoader, 0, 10);
+    // 10 resting lanes
+    for (int i = 0; i < 10; i++) {
+        Lane lane(LaneType::resting, sf::Vector2f(800, 80), textureLoader, false, 10);
         this->lanes.push_back(lane);
-
-    }
-    Lane lane1(LaneType::BLOCK, sf::Vector2f(800, 80), textureLoader, 0, 50);
-    this->lanes.push_back(lane1);
-
-
-    Lane lane2(LaneType::resting, sf::Vector2f(800, 80), textureLoader, 0,60);
-    this->lanes.push_back(lane2);
-    Lane lane3(LaneType::resting, sf::Vector2f(800, 80), textureLoader, 0, 70);
-    this->lanes.push_back(lane3);
-    Lane lane4(LaneType::resting, sf::Vector2f(800, 80), textureLoader, 0,80);
-    this->lanes.push_back(lane4);
-    Lane lane5(LaneType::resting, sf::Vector2f(800, 80), textureLoader, 0,90);
-    this->lanes.push_back(lane5);
-
-
-    for (int i = 0; i < 40; i++) {
-        int r = rand() % 3;
-        if (r == 0) {
-            Lane lane(LaneType::resting, sf::Vector2f(800, 80), textureLoader, i % 2 == 0,70+(rand()%11)*5);
-            this->lanes.push_back(lane);
-        }
-        else if (r == 1) {
-
-            Lane lane(LaneType::road, sf::Vector2f(800, 80), textureLoader, i % 2 == 0, 70 + (rand() % 11) * 5);
-            this->lanes.push_back(lane);
-        }
-        else if (r == 2) {
-
-
-            Lane lane(LaneType::water, sf::Vector2f(800, 80), textureLoader, i % 2 == 0, 70 + (rand() % 11) * 5);
-            this->lanes.push_back(lane);
-        }
     }
 
-    Lane lane8(LaneType::END, sf::Vector2f(800, 80), textureLoader, 0, 0);
-    this->lanes.push_back(lane8);
+    // Block lane
+    Lane blockLane(LaneType::BLOCK, sf::Vector2f(800, 80), textureLoader, false, 50);
+    this->lanes.push_back(blockLane);
 
-    for (int i = 0; i < 40; i++) {
-        int r = rand() % 3;
-        if (r == 0) {
-            Lane lane(LaneType::resting, sf::Vector2f(800, 80), textureLoader, i % 2 == 0, 15);
-            this->lanes.push_back(lane);
+    // 5 resting lanes
+    for (int i = 0; i < 5; i++) {
+        Lane lane(LaneType::resting, sf::Vector2f(800, 80), textureLoader, false, 60);
+        this->lanes.push_back(lane);
+    }
+
+    // Alternating water/road lanes separated by resting lanes
+    for (int i = 0; i < 20; i++) { // Total 20 lanes (10 water, 10 road)
+        // Resting lane before water/road
+        Lane restingLane(LaneType::resting, sf::Vector2f(800, 80), textureLoader, false, 70);
+        this->lanes.push_back(restingLane);
+
+        if (i % 2 == 0) {
+            // Water lane
+            Lane waterLane(LaneType::water, sf::Vector2f(800, 80), textureLoader, i % 2 == 0, 80 + (rand() % 11) * 5);
+            this->lanes.push_back(waterLane);
         }
-        else if (r == 1) {
-
-            Lane lane(LaneType::road, sf::Vector2f(800, 80), textureLoader, i % 2 == 0, 18);
-            this->lanes.push_back(lane);
+        else {
+            // Road lane
+            Lane roadLane(LaneType::road, sf::Vector2f(800, 80), textureLoader, i % 2 == 0, 80 + (rand() % 11) * 5);
+            this->lanes.push_back(roadLane);
         }
-        else if (r == 2) {
 
 
-            Lane lane(LaneType::water, sf::Vector2f(800, 80), textureLoader, i % 2 == 0, 17);
-            this->lanes.push_back(lane);
-        }
+    }
+
+    // Final resting lane
+    Lane finalRestingLane(LaneType::resting, sf::Vector2f(800, 80), textureLoader, false, 15);
+    this->lanes.push_back(finalRestingLane);
+
+    // END lane
+    Lane endLane(LaneType::END, sf::Vector2f(800, 80), textureLoader, false, 0);
+    this->lanes.push_back(endLane);
+
+    // 10 resting lanes
+    for (int i = 0; i < 10; i++) {
+        Lane lane(LaneType::resting, sf::Vector2f(800, 80), textureLoader, false, 10);
+        this->lanes.push_back(lane);
+    }
+    // 10 resting lanes
+    for (int i = 0; i < 10; i++) {
+        Lane lane(LaneType::resting, sf::Vector2f(800, 80), textureLoader, false, 10);
+        this->lanes.push_back(lane);
     }
 
 }
+
 
 
 void Level::resetLevel() {

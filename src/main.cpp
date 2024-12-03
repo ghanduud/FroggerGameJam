@@ -30,7 +30,21 @@ int main() {
     //Game pw;
 
 
+    sf::SoundBuffer buffer;
+        
+    if (!buffer.loadFromFile("../resources/audio.ogg")) {
+        std::cerr << "Failed to load audio file!" << std::endl;
+        return -1;
+    }
 
+        sf::Sound sound;
+        sound.setBuffer(buffer);
+
+
+        sound.setLoop(true);
+
+        sound.play()
+            ;
     
     TextureLoader textureLoader;
     Level level1(textureLoader);
@@ -66,7 +80,7 @@ int main() {
             }
             
         }
-
+        if (level1.isGameOver) window.close();
         level1.update(timePerFrame.asSeconds(), direction);
 
         //pw.Update(0.2);

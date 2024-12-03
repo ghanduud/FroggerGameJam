@@ -12,7 +12,7 @@ public:
 	sf::Texture endTexture;
 
 	sf::Texture bigSnakeTexture;
-
+	sf::Texture trunkTexture;
 
 	// frog stuff
 	sf::Texture frogJumpingTexture;
