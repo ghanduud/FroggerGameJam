@@ -22,6 +22,8 @@ public:
 	std::vector<MovingPlatform> movingPlatforms;
 	sf::RectangleShape laneTile;
 	sf::Sprite landSprit;
+	sf::Sprite underlaySprit;
+
 	float laneSpeed;
 	Direction laneDirection;
 	float totalsize;

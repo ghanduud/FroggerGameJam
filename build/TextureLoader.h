@@ -9,6 +9,10 @@ public:
 
 	sf::Texture blockTexture;
 	sf::Texture restTexture;
+	sf::Texture endTexture;
+
+	sf::Texture bigSnakeTexture;
+
 
 	// frog stuff
 	sf::Texture frogJumpingTexture;

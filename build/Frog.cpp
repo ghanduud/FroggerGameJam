@@ -1,5 +1,7 @@
 #include "Frog.h"
 
+
+
 Frog::Frog()
 {
 }
@@ -11,7 +13,7 @@ Frog::Frog(sf::Vector2f Position, float laneHeight, TextureLoader& textureLoader
 	this->frogPosition = Position;
 	this->frogSize = laneHeight;
 
-	this->frogVelocity = 80.f*60;
+	this->frogVelocity = 80.f * 60;
 
 	this->isAlive = true;
 	this->isJumping = false;
@@ -38,8 +40,21 @@ Frog::Frog(sf::Vector2f Position, float laneHeight, TextureLoader& textureLoader
 	this->frogSprite.setPosition(Position);
 	this->frogSprite.setScale(sf::Vector2f(size.y / textureLoader.frogStandingTexture.getSize().x, size.y / textureLoader.frogStandingTexture.getSize().y));
 
-	
-	
+
+
+
+	// Initialize jumping sprite
+	this->JumpingSprite.setTexture(textureLoader.frogJumpingTexture);
+	this->JumpingSprite.setOrigin(textureLoader.frogJumpingTexture.getSize().x / 2, textureLoader.frogJumpingTexture.getSize().y / 2);
+	this->JumpingSprite.setTextureRect(sf::IntRect(0, 0,
+		(int)textureLoader.frogJumpingTexture.getSize().x,
+		(int)textureLoader.frogJumpingTexture.getSize().y));
+	this->JumpingSprite.setPosition(Position.x + 10, Position.y + 10); // change back
+
+	//this->JumpingSprite.setScale(sf::Vector2f(size.y / textureLoader.frogJumpingTexture.getSize().x, size.y / textureLoader.frogJumpingTexture.getSize().y));
+	this->JumpingSprite.setScale(sf::Vector2f((size.y *1) / textureLoader.frogJumpingTexture.getSize().x, (size.y * 1200/710) / textureLoader.frogJumpingTexture.getSize().y));
+
+
 
 	sf::Sprite frogSprite; // the used sprite
 	sf::Sprite frogJumpingSprite;
@@ -57,7 +72,7 @@ void Frog::death()
 	this->isAlive = false;
 }
 
-bool Frog::isOutOfScreenBounds(sf::Vector2f newPosition,int screenWidth, int screenHeight)
+bool Frog::isOutOfScreenBounds(sf::Vector2f newPosition, int screenWidth, int screenHeight)
 {
 	if ((newPosition.x - (0.5 * this->frogSize) <= 0) || // left bound
 		(newPosition.x + (0.5 * this->frogSize) >= screenWidth) || // right bound
@@ -74,6 +89,7 @@ void Frog::render(sf::RenderWindow& window)
 {
 	//window.draw(this->frogShapeTest);
 	window.draw(this->frogSprite);
+	window.draw(this->JumpingSprite);
 }
 
 void Frog::update(float deltaTime, Direction Dir)
@@ -83,18 +99,18 @@ void Frog::update(float deltaTime, Direction Dir)
 		return;
 	}
 
-	if (Dir == Direction::UP) 
+	if (Dir == Direction::UP)
 	{
 		//this->frogPosition.y -= deltaTime * frogVelocity;
 
 		this->frogDirection = UP;
-	
-		
+
+
 		if (this->frogSprite.getRotation() != 0)
 			this->frogSprite.setRotation(0);
 
 	}
-	if (Dir == Direction::DOWN) 
+	if (Dir == Direction::DOWN)
 	{
 		//this->frogPosition.y += deltaTime * frogVelocity;
 
@@ -104,9 +120,9 @@ void Frog::update(float deltaTime, Direction Dir)
 			this->frogSprite.setRotation(180);
 
 	}
-	if (Dir == Direction::LEFT) 
+	if (Dir == Direction::LEFT)
 	{
-		sf::Vector2f newPosition = sf::Vector2f(this->frogPosition.x - deltaTime * frogVelocity,frogPosition.y);
+		sf::Vector2f newPosition = sf::Vector2f(this->frogPosition.x - deltaTime * frogVelocity, frogPosition.y);
 		if (!isOutOfScreenBounds(newPosition, 800, 800)) frogPosition = newPosition;
 
 		this->frogDirection = LEFT;
@@ -115,9 +131,9 @@ void Frog::update(float deltaTime, Direction Dir)
 			this->frogSprite.setRotation(270);
 
 	}
-	if (Dir == Direction::RIGHT) 
+	if (Dir == Direction::RIGHT)
 	{
-		sf::Vector2f newPosition = sf::Vector2f(this->frogPosition.x+ deltaTime * frogVelocity, frogPosition.y );
+		sf::Vector2f newPosition = sf::Vector2f(this->frogPosition.x + deltaTime * frogVelocity, frogPosition.y);
 		if (!isOutOfScreenBounds(newPosition, 800, 800)) frogPosition = newPosition;
 
 		this->frogDirection = RIGHT;
@@ -142,7 +158,7 @@ void Frog::update(float deltaTime, Direction Dir)
 
 void Frog::stretchingLegs(float deltaTime)
 {
-	
+
 }
 
 

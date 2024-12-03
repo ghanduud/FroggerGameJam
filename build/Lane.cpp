@@ -18,7 +18,7 @@ Lane::Lane(LaneType type, sf::Vector2f size, TextureLoader& textureLoader, bool 
         xsize = 0;
         for (int i = 0;i < 7;i++) {
             int size = rand() % 3 + 1;
-            MovingPlatform platform(size, Obstical, laneDirection,xsize);
+            MovingPlatform platform(size, Obstical, laneDirection,xsize, textureLoader);
             this->movingPlatforms.push_back(platform);
             xsize += 80 * (size + rand() % 3+2);
         }
@@ -45,7 +45,7 @@ Lane::Lane(LaneType type, sf::Vector2f size, TextureLoader& textureLoader, bool 
         this->setSpritToLane(textureLoader.blockTexture, size,0, textureLoader.landTexture);
         break;
     case END:
-        this->setSpritToLane(textureLoader.blockTexture, size,1, textureLoader.landTexture);
+        this->setSpritToLane(textureLoader.endTexture, size,0, textureLoader.landTexture);
         break;
     default:
         break;
@@ -75,12 +75,6 @@ void Lane::renderObsticals(sf::RenderWindow& window)
 
 
 void Lane::setSpritToLane(sf::Texture& texture, sf::Vector2f size, bool isWater, sf::Texture& landTexture) {
-
-
-
-
-
-
         this->landSprit.setTextureRect(sf::IntRect(0, 0,
             (int)texture.getSize().x * size.x / size.y,
             (int)texture.getSize().y));
