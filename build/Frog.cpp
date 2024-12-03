@@ -31,8 +31,8 @@ Frog::Frog(sf::Vector2f Position, float laneHeight, TextureLoader& textureLoader
 
 	// Initialize sprite
 	this->frogSprite.setTexture(textureLoader.frogStandingTexture);
-	this->frogSprite.setPosition(Position);
 	this->frogSprite.setOrigin(laneHeight / 2, laneHeight / 2);
+	this->frogSprite.setPosition(Position);
 	this->frogSprite.setScale(sf::Vector2f(size.y / textureLoader.frogStandingTexture.getSize().x, size.y / textureLoader.frogStandingTexture.getSize().y));
 
 	
@@ -69,7 +69,8 @@ bool Frog::isOutOfScreenBounds(int screenWidth, int screenHeight)
 
 void Frog::render(sf::RenderWindow& window)
 {
-	window.draw(this->frogShapeTest);
+	//window.draw(this->frogShapeTest);
+	window.draw(this->frogSprite);
 }
 
 void Frog::update(float deltaTime, Direction Dir)

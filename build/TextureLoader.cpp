@@ -15,12 +15,12 @@ TextureLoader::TextureLoader()
 
 
     // frog stuff
-    if (!frogJumpingTexture.loadFromFile("image.png")) { //--------------------change image here
-        std::cerr << "Failed to load image.png " << std::endl;
+    if (!this->frogJumpingTexture.loadFromFile("C:/Users/Admin/Documents/GitHub/FroggerGameJam/resources/frog.png")) { //--------------------change image here
+        std::cerr << "Failed to load image.png from ghandy" << std::endl;
         return;
     }
 
-    if (!frogStandingTexture.loadFromFile("image.png")) { //-----------------------change image here too
+    if (!frogStandingTexture.loadFromFile("C:/Users/Admin/Documents/GitHub/FroggerGameJam/resources/frog.png")) { //-----------------------change image here too
         std::cerr << "Failed to load image.png" << std::endl;
         return;
     }
