@@ -24,7 +24,6 @@ public:
 	sf::Sprite landSprit;
 	float laneSpeed;
 	Direction laneDirection;
-	float laneSpeed;
 	//sf::Texture* landTexture;
 
 	Lane(LaneType type, sf::Vector2f size,TextureLoader& textureLoader, bool isInverted);
