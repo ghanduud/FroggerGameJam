@@ -20,8 +20,8 @@ Frog::Frog(sf::Vector2f Position, float laneHeight, TextureLoader& textureLoader
 	this->frogDirection = UP;
 
 	this->frogCollider.position = Position;
-	this->frogCollider.ul = Position - sf::Vector2f(this->frogSize, this->frogSize) / 2.f;
-	this->frogCollider.lr = Position + sf::Vector2f(this->frogSize, this->frogSize) / 2.f;
+	this->frogCollider.ul = Position;
+	this->frogCollider.lr = Position + sf::Vector2f(this->frogSize, this->frogSize);
 
 	// testing frog
 	this->frogShapeTest.setFillColor(sf::Color::Red);
@@ -161,4 +161,19 @@ void Frog::stretchingLegs(float deltaTime)
 
 }
 
+
+
+void Frog::frogOnWater(float speed ,float dt) {
+	sf::Vector2f newPosition = sf::Vector2f(this->frogPosition.x - dt * ( - speed), frogPosition.y);
+	if (!isOutOfScreenBounds(newPosition, 800, 800)) frogPosition = newPosition;
+
+	// updating the frog AABB collider
+	this->frogCollider.updatePosition(this->frogPosition);
+
+	// calling the function that makes the frog jump animation
+	this->stretchingLegs(dt);
+
+	// updating the sprite position
+	this->frogSprite.setPosition(this->frogPosition);
+}
 

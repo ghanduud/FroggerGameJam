@@ -16,9 +16,10 @@ public:
     AABBCollider platformCollider;
     int platformSize;
     PlatformType platformType;
+    int directionOfPlatform;
 
 
-    MovingPlatform(int size, PlatformType type, Direction direction);
+    MovingPlatform(int size, PlatformType type, Direction direction,int x);
 
     void update(float dt, float speed, float laneYPosition);
 

@@ -1,13 +1,13 @@
 #include "Lane.h"
 
-Lane::Lane(LaneType type, sf::Vector2f size, TextureLoader& textureLoader, bool isInverted) {
+Lane::Lane(LaneType type, sf::Vector2f size, TextureLoader& textureLoader, bool isInverted, float speed) {
     
-
+    this->laneSpeed = speed;
     laneType = type;
     laneTile.setSize(size);
     laneDirection = LEFT;
     if (rand() % 2 == 0) laneDirection = RIGHT;
-    
+    int xsize;
     switch (type) {
     case resting:
         this->setSpritToLane(textureLoader.restTexture,size,0, textureLoader.landTexture);
@@ -15,13 +15,20 @@ Lane::Lane(LaneType type, sf::Vector2f size, TextureLoader& textureLoader, bool 
         break;
     case road:
         this->setSpritToLane(textureLoader.landTexture,size,0, textureLoader.landTexture);
+        xsize = 0;
         for (int i = 0;i < 7;i++) {
-            MovingPlatform platform(i%3+1, Obstical,laneDirection);
+            int size = rand() % 3 + 1;
+            MovingPlatform platform(size, Obstical, laneDirection,xsize);
             this->movingPlatforms.push_back(platform);
+            xsize += 80 * size;
         }
         break;
     case water:
         this->setSpritToLane(textureLoader.waterTexture,size,1, textureLoader.landTexture);
+        for (int i = 0;i < 7;i++) {
+            MovingPlatform platform(rand() % 3 + 1, Hopper, laneDirection,i*80);
+            this->movingPlatforms.push_back(platform);
+        }
         if (isInverted) {
             std::cout << isInverted << std::endl;
             sf::Vector2f currentScale = landSprit.getScale();
@@ -94,8 +101,10 @@ sf::RectangleShape Lane::setObsticalShape(int number) {
 
 
 
-void Lane::update(float deltaTime) {
-    for (MovingPlatform mp : this->movingPlatforms) {
-        mp.update(deltaTime, laneSpeed, landSprit.getPosition().y);
+void Lane::update(float deltaTime,int start,int index) {
+    int Ypos = 800 + 80 * (start - index - 1);
+    for (int i = 0; i < movingPlatforms.size(); i++)
+    {
+        movingPlatforms[i].update(deltaTime, laneSpeed, Ypos);
     }
 }
