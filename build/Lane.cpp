@@ -29,7 +29,7 @@ Lane::Lane(LaneType type, sf::Vector2f size, TextureLoader& textureLoader, bool 
         xsize = 0;
         for (int i = 0;i < 7;i++) {
             int size = rand() % 3 + 1;
-            MovingPlatform platform(size, Hopper, laneDirection,xsize);
+            MovingPlatform platform(size, Hopper, laneDirection,xsize,textureLoader);
             this->movingPlatforms.push_back(platform);
             xsize += 80 * (size + rand() % 3+2);
         }
