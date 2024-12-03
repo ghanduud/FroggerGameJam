@@ -22,6 +22,7 @@ public:
 	std::vector<MovingPlatform> movingPlatforms;
 	sf::RectangleShape laneTile;
 	sf::Sprite landSprit;
+	float laneSpeed;
 	Direction laneDirection;
 	//sf::Texture* landTexture;
 
