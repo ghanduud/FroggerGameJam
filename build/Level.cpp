@@ -79,7 +79,7 @@ void Level::update(float dt, Direction direction) {
         return;
     }*/
 
-    std::cout << this->frogCurrentLane << std::endl;
+    //std::cout << this->frogCurrentLane << std::endl;
 
 
 
@@ -102,8 +102,9 @@ void Level::update(float dt, Direction direction) {
     this->frog.update(dt, direction);
 
 
-    for (Lane& lane : this->lanes) {
-    lane.update(dt);
+    for (int i = 0; i < lanes.size(); i++)
+    {
+        lanes[i].update(dt, start, i);
     }
 
     if (this->lanes[this->frogCurrentLane].laneType == LaneType::water) {

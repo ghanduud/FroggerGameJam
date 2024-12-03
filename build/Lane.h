@@ -31,6 +31,6 @@ public:
 	void renderObsticals(sf::RenderWindow &window);
 	void setSpritToLane(sf::Texture& texture, sf::Vector2f size, bool isWater, sf::Texture& landTexture);
 	sf::RectangleShape setObsticalShape(int number);
-	void update(float deltaTime);
+	void update(float deltaTime,int start,int index);
 };
 

@@ -94,8 +94,10 @@ sf::RectangleShape Lane::setObsticalShape(int number) {
 
 
 
-void Lane::update(float deltaTime) {
-    for (MovingPlatform mp : this->movingPlatforms) {
-        mp.update(deltaTime, laneSpeed, landSprit.getPosition().y);
+void Lane::update(float deltaTime,int start,int index) {
+    int Ypos = 800 + 80 * (start - index - 1);
+    for (int i = 0; i < movingPlatforms.size(); i++)
+    {
+        movingPlatforms[i].update(deltaTime, 0, Ypos);
     }
 }
