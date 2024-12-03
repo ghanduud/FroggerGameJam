@@ -8,7 +8,8 @@ Lane::Lane(LaneType type, sf::Vector2f size, TextureLoader& textureLoader, bool 
     landSprit.setScale(sf::Vector2f(size.y / textureLoader.landTexture.getSize().x, size.y / textureLoader.landTexture.getSize().y));
 
     laneType = type;
-
+    laneTile.setSize(size);
+    
     switch (type) {
     case resting:
         laneTile.setFillColor(sf::Color::Blue);

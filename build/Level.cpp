@@ -6,10 +6,10 @@
 
 Level::Level(TextureLoader& textureLoader) {
 
-    sf::Vector2f frogPosition(400, 80*6+40 );
+    sf::Vector2f frogPosition(400, 80*6 +10);
 
 
-    Frog frog(frogPosition, 80);
+    Frog frog(frogPosition, 80, textureLoader, sf::Vector2f(80, 80));
     this->frog = frog;
 
     this->frogCurrentLane = start + 3;

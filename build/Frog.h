@@ -1,10 +1,10 @@
 #pragma once
 
 #include <iostream>
-
 #include <SFML/Graphics.hpp>
 
 #include "AABBCollider.h"
+#include "TextureLoader.h"
 
 enum Direction {
 	NONE, UP, DOWN, LEFT, RIGHT
@@ -24,8 +24,7 @@ public:
 
 	sf::RectangleShape frogShapeTest; // for testing on
 
-	sf::Texture frogJumpingTexture;
-	sf::Texture frogStandingTexture;
+	
 
 	sf::Sprite frogSprite; // the used sprite
 
@@ -35,9 +34,9 @@ public:
 	// Methods
 
 	Frog();
-	Frog(sf::Vector2f Position, float laneHeight);
+	Frog(sf::Vector2f Position, float laneHeight, TextureLoader& textureLoader, sf::Vector2f size);
 	
-	void getSprites();
+	//void getSprites();
 	bool isDead();
 	void death();
 	bool isOutOfScreenBounds(int screenWidth, int screenHeight);
