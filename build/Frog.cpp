@@ -57,12 +57,12 @@ void Frog::death()
 	this->isAlive = false;
 }
 
-bool Frog::isOutOfScreenBounds(int screenWidth, int screenHeight)
+bool Frog::isOutOfScreenBounds(sf::Vector2f newPosition,int screenWidth, int screenHeight)
 {
-	if ((this->frogPosition.x - (0.5 * this->frogSize) <= 0) || // left bound
-		(this->frogPosition.x + (0.5 * this->frogSize) >= screenWidth) || // right bound
-		(this->frogPosition.y - (0.5 * this->frogSize) <= 0) || // upper bound not possible
-		(this->frogPosition.y + (0.5 * this->frogSize) >= screenHeight)) // lower bound not possible
+	if ((newPosition.x - (0.5 * this->frogSize) <= 0) || // left bound
+		(newPosition.x + (0.5 * this->frogSize) >= screenWidth) || // right bound
+		(newPosition.y - (0.5 * this->frogSize) <= 0) || // upper bound not possible
+		(newPosition.y + (0.5 * this->frogSize) >= screenHeight)) // lower bound not possible
 	{
 		return true;
 	}
@@ -106,7 +106,8 @@ void Frog::update(float deltaTime, Direction Dir)
 	}
 	if (Dir == Direction::LEFT) 
 	{
-		this->frogPosition.x -= deltaTime * frogVelocity;
+		sf::Vector2f newPosition = sf::Vector2f(this->frogPosition.x - deltaTime * frogVelocity,frogPosition.y);
+		if (!isOutOfScreenBounds(newPosition, 800, 800)) frogPosition = newPosition;
 
 		this->frogDirection = LEFT;
 
@@ -116,7 +117,8 @@ void Frog::update(float deltaTime, Direction Dir)
 	}
 	if (Dir == Direction::RIGHT) 
 	{
-		this->frogPosition.x += deltaTime * frogVelocity;
+		sf::Vector2f newPosition = sf::Vector2f(this->frogPosition.x+ deltaTime * frogVelocity, frogPosition.y );
+		if (!isOutOfScreenBounds(newPosition, 800, 800)) frogPosition = newPosition;
 
 		this->frogDirection = RIGHT;
 
