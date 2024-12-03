@@ -31,7 +31,9 @@ Frog::Frog(sf::Vector2f Position, float laneHeight, TextureLoader& textureLoader
 
 	// Initialize sprite
 	this->frogSprite.setTexture(textureLoader.frogStandingTexture);
-	this->frogSprite.setOrigin(400, 400);
+	// Hassan the Alexandrenian DID THIS
+	// 8yrt L scale l (400, 400) bdl ma kan (laneHeight/2, laneHeight/2)
+	this->frogSprite.setOrigin(40, 40);
 	this->frogSprite.setPosition(Position);
 	this->frogSprite.setScale(sf::Vector2f(size.y / textureLoader.frogStandingTexture.getSize().x, size.y / textureLoader.frogStandingTexture.getSize().y));
 
