@@ -1,37 +1,10 @@
 #include "MovingPlatform.h"
 
 MovingPlatform::MovingPlatform(int size, PlatformType type,Direction direction,int x, TextureLoader& textureLoader) {
-    /*platformShape.setSize(sf::Vector2f(80 * size, 80));
+    platformShape.setSize(sf::Vector2f(80 * size, 80));
+    platformShape.setTexture(&textureLoader.bigSnakeTexture);
     if (direction == RIGHT) platformShape.setPosition(x-platformShape.getSize().x, 0);
     if (direction == LEFT) platformShape.setPosition(800+x, 0);
-    platformSize = size;
-    platformType = type;
-    this->platformCollider.ul = sf::Vector2f(0, 0);
-    this->platformCollider.lr = sf::Vector2f(size * 80, 80);
-    if (direction == LEFT) {
-        directionOfPlatform = -1;
-    }
-    else {
-        directionOfPlatform = 1;
-    }*/
-
-    this->platformSprite.setTexture(textureLoader.bigSnakeTexture);
-    this->platformSprite.setTextureRect(sf::IntRect(0, 0,
-        textureLoader.bigSnakeTexture.getSize().x,
-        textureLoader.bigSnakeTexture.getSize().y
-    ));
-    this->platformSprite.setTextureRect(sf::IntRect(0, 0,
-        (int)textureLoader.bigSnakeTexture.getSize().x*3,
-        (int)textureLoader.bigSnakeTexture.getSize().y));
-    if (direction == RIGHT) platformSprite.setPosition(x - platformShape.getSize().x, 0);
-    if (direction == LEFT) platformSprite.setPosition(800 + x, 0);
-    this->platformSprite.setScale(
-        sf::Vector2f(
-            (80.f * size) / textureLoader.bigSnakeTexture.getSize().x,
-            80.f / textureLoader.bigSnakeTexture.getSize().y
-        )
-    );
-
     platformSize = size;
     platformType = type;
     this->platformCollider.ul = sf::Vector2f(0, 0);
@@ -46,12 +19,11 @@ MovingPlatform::MovingPlatform(int size, PlatformType type,Direction direction,i
 
 void MovingPlatform::update(float dt, float speed,float laneYPosition) {
 
-    platformSprite.setPosition(sf::Vector2f(platformSprite.getPosition().x + (speed * directionOfPlatform) * dt, laneYPosition));
-    
-    platformCollider.updatePosition(platformSprite.getPosition());
+    platformShape.setPosition(sf::Vector2f(platformShape.getPosition().x + (speed * directionOfPlatform) * dt, laneYPosition));
+    platformCollider.updatePosition(platformShape.getPosition());
 }
 
 void MovingPlatform::render(sf::RenderWindow& window)
 {
-    window.draw(platformSprite);
+    window.draw(platformShape);
 }
