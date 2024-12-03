@@ -19,7 +19,7 @@ TextureLoader::TextureLoader()
     }
     blockTexture.setRepeated(true);
 
-    if (!this->restTexture.loadFromFile("../resources/grass.png")) {
+    if (!this->restTexture.loadFromFile("../resources/grass2.png")) {
         std::cout << "Error loading land texture!" << std::endl;
     }
     restTexture.setRepeated(true);
