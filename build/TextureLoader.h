@@ -6,6 +6,11 @@ class TextureLoader
 public:
 	sf::Texture landTexture;
 	sf::Texture waterTexture;
+
+	// frog stuff
+	sf::Texture frogJumpingTexture;
+	sf::Texture frogStandingTexture;
+
 	TextureLoader();
 };
 
