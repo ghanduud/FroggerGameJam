@@ -4,6 +4,7 @@
 #include <vector>
 #include <SFML/Graphics/RenderWindow.hpp>
 #include "TextureLoader.h"
+#include "Frog.h"
 
 enum LaneType
 {
@@ -21,6 +22,7 @@ public:
 	std::vector<MovingPlatform> movingPlatforms;
 	sf::RectangleShape laneTile;
 	sf::Sprite landSprit;
+	Direction laneDirection;
 	//sf::Texture* landTexture;
 
 	Lane(LaneType type, sf::Vector2f size,TextureLoader& textureLoader, bool isInverted);

@@ -9,9 +9,12 @@ Lane::Lane(LaneType type, sf::Vector2f size, TextureLoader& textureLoader, bool 
 
     laneType = type;
     laneTile.setSize(size);
+    laneDirection = LEFT;
+    if (rand() % 2 == 0) laneDirection = RIGHT;
     
     switch (type) {
     case resting:
+        laneDirection = NONE;
         laneTile.setFillColor(sf::Color::Blue);
         break;
     case road:
