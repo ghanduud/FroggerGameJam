@@ -11,7 +11,7 @@ Frog::Frog(sf::Vector2f Position, float laneHeight)
 	this->frogPosition = Position;
 	this->frogSize = laneHeight;
 
-	this->frogVelocity = 1.f;
+	this->frogVelocity = 80.f*60;
 
 	this->isAlive = true;
 	this->isJumping = false;

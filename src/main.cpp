@@ -46,23 +46,25 @@ int main() {
             if (event.type == sf::Event::Closed) {
                 window.close();
             }
-
-            if (event.key.code == sf::Keyboard::Up)
-            {
-                direction = UP;
+            if (event.type == Event::KeyReleased) {
+                if (event.key.code == sf::Keyboard::Up)
+                {
+                    direction = UP;
+                }
+                if (event.key.code == sf::Keyboard::Down)
+                {
+                    direction = DOWN;
+                }
+                if (event.key.code == sf::Keyboard::Left)
+                {
+                    direction = LEFT;
+                }
+                if (event.key.code == sf::Keyboard::Right)
+                {
+                    direction = RIGHT;
+                }
             }
-            if (event.key.code == sf::Keyboard::Down)
-            {
-                direction = DOWN;
-            }
-            if (event.key.code == sf::Keyboard::Left)
-            {
-                direction = LEFT;
-            }
-            if (event.key.code == sf::Keyboard::Right)
-            {
-                direction = RIGHT;
-            }
+            
         }
 
         level1.update(timePerFrame.asSeconds(), direction);
