@@ -14,13 +14,18 @@ TextureLoader::TextureLoader()
     waterTexture.setRepeated(true);
 
 
+    if (!this->blockTexture.loadFromFile("../resources/block.png")) {
+        std::cout << "Error loading land texture!" << std::endl;
+    }
+    blockTexture.setRepeated(true);
+
     // frog stuff
-    if (!this->frogJumpingTexture.loadFromFile("C:/Users/Admin/Documents/GitHub/FroggerGameJam/resources/frog.png")) { //--------------------change image here
+    if (!this->frogJumpingTexture.loadFromFile("../resources/frog.png")) { //--------------------change image here
         std::cerr << "Failed to load image.png from ghandy" << std::endl;
         return;
     }
 
-    if (!frogStandingTexture.loadFromFile("C:/Users/Admin/Documents/GitHub/FroggerGameJam/resources/frog.png")) { //-----------------------change image here too
+    if (!frogStandingTexture.loadFromFile("../resources/frog.png")) { //-----------------------change image here too
         std::cerr << "Failed to load image.png" << std::endl;
         return;
     }

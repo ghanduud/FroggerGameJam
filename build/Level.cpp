@@ -6,15 +6,15 @@
 
 Level::Level(TextureLoader& textureLoader) {
 
-    sf::Vector2f frogPosition(400, 80*6 +10);
+    sf::Vector2f frogPosition(400, 80*6+40);
 
 
     Frog frog(frogPosition, 80, textureLoader, sf::Vector2f(80, 80));
     this->frog = frog;
 
-    this->frogCurrentLane = start + 3;
+    this->frogCurrentLane = start + 4;
 
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < 9; i++) {
         Lane lane(LaneType::resting, sf::Vector2f(800, 80),textureLoader, i % 2 == 0);
         this->lanes.push_back(lane);
 
@@ -77,7 +77,7 @@ void Level::update(float dt, Direction direction) {
         return;
     }
 
-
+    std::cout << this->frogCurrentLane << std::endl;
 
 
 
@@ -89,7 +89,7 @@ void Level::update(float dt, Direction direction) {
         start += 1;   
     }
     if (direction == Direction::DOWN) {
-        if (this->lanes[this->frogCurrentLane + 1].laneType != LaneType::BLOCK) {    
+        if (this->lanes[this->frogCurrentLane-1].laneType != LaneType::BLOCK) {    
             start -= 1;
         }
 
@@ -141,7 +141,7 @@ void Level::renderMap(int sizeOfLanesInWindow, sf::RenderWindow& window)
 {
     
 		for (int i = 0; i < sizeOfLanesInWindow;i++) {
-			lanes[start - 1 + i].render(window, i);
+			lanes[start + i].render(window, i);
 		}
 		frog.render(window);
 

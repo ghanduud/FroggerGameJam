@@ -17,7 +17,7 @@ public:
 	std::vector <Lane> lanes;
 	int frogCurrentLane;
 	int score = 0;
-	int start = 11;
+	int start = 10;
 
 	bool isGameOver = false;
 	float gameOverTimer = 0.0f;

@@ -26,7 +26,7 @@ Lane::Lane(LaneType type, sf::Vector2f size, TextureLoader& textureLoader, bool 
         }
         break;
     case BLOCK:
-        landSprit.setTexture(textureLoader.waterTexture);
+        landSprit.setTexture(textureLoader.blockTexture);
         break;
     case END:
         landSprit.setTexture(textureLoader.waterTexture);

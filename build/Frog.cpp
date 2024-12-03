@@ -31,18 +31,19 @@ Frog::Frog(sf::Vector2f Position, float laneHeight, TextureLoader& textureLoader
 
 	// Initialize sprite
 	this->frogSprite.setTexture(textureLoader.frogStandingTexture);
-	// Hassan the Alexandrenian DID THIS
-	// 8yrt L scale l (400, 400) bdl ma kan (laneHeight/2, laneHeight/2)
-	this->frogSprite.setOrigin(40, 40);
+	this->frogSprite.setOrigin(textureLoader.landTexture.getSize().x / 2, textureLoader.landTexture.getSize().y / 2);
+	this->frogSprite.setTextureRect(sf::IntRect(0, 0,
+		(int)textureLoader.landTexture.getSize().x,
+		(int)textureLoader.landTexture.getSize().y));
 	this->frogSprite.setPosition(Position);
 	this->frogSprite.setScale(sf::Vector2f(size.y / textureLoader.frogStandingTexture.getSize().x, size.y / textureLoader.frogStandingTexture.getSize().y));
 
 	
 	
 
-	//sf::Sprite frogSprite; // the used sprite
-	//sf::Sprite frogJumpingSprite;
-	//sf::Sprite frogStandingSprite;
+	sf::Sprite frogSprite; // the used sprite
+	sf::Sprite frogJumpingSprite;
+	sf::Sprite frogStandingSprite;
 }
 
 
@@ -125,7 +126,7 @@ void Frog::update(float deltaTime, Direction Dir)
 	}
 
 	// TEST: updating sfml rectangle to test!
-	this->frogShapeTest.setPosition(this->frogPosition);
+	//this->frogSprite.setPosition(this->frogPosition);
 
 	// updating the frog AABB collider
 	this->frogCollider.updatePosition(this->frogPosition);
