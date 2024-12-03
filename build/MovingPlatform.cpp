@@ -1,9 +1,9 @@
 #include "MovingPlatform.h"
 
-MovingPlatform::MovingPlatform(int size, PlatformType type,Direction direction) {
+MovingPlatform::MovingPlatform(int size, PlatformType type,Direction direction,int x) {
     platformShape.setSize(sf::Vector2f(80 * size, 80));
-    if (direction == RIGHT) platformShape.setPosition(-platformShape.getSize().x, 0);
-    if (direction == LEFT) platformShape.setPosition(800, 0);
+    if (direction == RIGHT) platformShape.setPosition(x-platformShape.getSize().x, 0);
+    if (direction == LEFT) platformShape.setPosition(800+x, 0);
     platformSize = size;
     platformType = type;
     this->platformCollider.ul = sf::Vector2f(0, 0);

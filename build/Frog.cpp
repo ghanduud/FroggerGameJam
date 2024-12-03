@@ -18,8 +18,8 @@ Frog::Frog(sf::Vector2f Position, float laneHeight, TextureLoader& textureLoader
 	this->frogDirection = UP;
 
 	this->frogCollider.position = Position;
-	this->frogCollider.ul = Position - sf::Vector2f(this->frogSize, this->frogSize) / 2.f;
-	this->frogCollider.lr = Position + sf::Vector2f(this->frogSize, this->frogSize) / 2.f;
+	this->frogCollider.ul = Position;
+	this->frogCollider.lr = Position + sf::Vector2f(this->frogSize, this->frogSize);
 
 	// testing frog
 	this->frogShapeTest.setFillColor(sf::Color::Red);

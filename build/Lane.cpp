@@ -7,7 +7,7 @@ Lane::Lane(LaneType type, sf::Vector2f size, TextureLoader& textureLoader, bool 
     laneTile.setSize(size);
     laneDirection = LEFT;
     if (rand() % 2 == 0) laneDirection = RIGHT;
-    
+    int xsize;
     switch (type) {
     case resting:
         this->setSpritToLane(textureLoader.restTexture,size,0, textureLoader.landTexture);
@@ -15,15 +15,18 @@ Lane::Lane(LaneType type, sf::Vector2f size, TextureLoader& textureLoader, bool 
         break;
     case road:
         this->setSpritToLane(textureLoader.landTexture,size,0, textureLoader.landTexture);
+        xsize = 0;
         for (int i = 0;i < 7;i++) {
-            MovingPlatform platform(i%3+1, Obstical,laneDirection);
+            int size = rand() % 3 + 1;
+            MovingPlatform platform(size, Obstical, laneDirection,xsize);
             this->movingPlatforms.push_back(platform);
+            xsize += 80 * size;
         }
         break;
     case water:
         this->setSpritToLane(textureLoader.waterTexture,size,1, textureLoader.landTexture);
         for (int i = 0;i < 7;i++) {
-            MovingPlatform platform(i % 3 + 1, Hopper, laneDirection);
+            MovingPlatform platform(rand() % 3 + 1, Hopper, laneDirection,i*80);
             this->movingPlatforms.push_back(platform);
         }
         if (isInverted) {
