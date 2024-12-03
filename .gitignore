@@ -361,3 +361,4 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/build/enc_temp_folder/3fa9bd8b242345dce8a4866b6197efd0/Frog.cpp

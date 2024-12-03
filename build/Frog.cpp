@@ -88,9 +88,10 @@ void Frog::update(float deltaTime, Direction Dir)
 		//this->frogPosition.y -= deltaTime * frogVelocity;
 
 		this->frogDirection = UP;
+	
 		
-		if (this->frogSprite.getRotation() != 270)
-			this->frogSprite.setRotation(270);
+		if (this->frogSprite.getRotation() != 0)
+			this->frogSprite.setRotation(0);
 
 	}
 	if (Dir == Direction::DOWN) 
@@ -99,8 +100,8 @@ void Frog::update(float deltaTime, Direction Dir)
 
 		this->frogDirection = DOWN;
 
-		if (this->frogSprite.getRotation() != 90)
-			this->frogSprite.setRotation(90);
+		if (this->frogSprite.getRotation() != 180)
+			this->frogSprite.setRotation(180);
 
 	}
 	if (Dir == Direction::LEFT) 
@@ -109,8 +110,8 @@ void Frog::update(float deltaTime, Direction Dir)
 
 		this->frogDirection = LEFT;
 
-		if (this->frogSprite.getRotation() != 180)
-			this->frogSprite.setRotation(180);
+		if (this->frogSprite.getRotation() != 270)
+			this->frogSprite.setRotation(270);
 
 	}
 	if (Dir == Direction::RIGHT) 
@@ -119,8 +120,8 @@ void Frog::update(float deltaTime, Direction Dir)
 
 		this->frogDirection = RIGHT;
 
-		if (this->frogSprite.getRotation() != 0)
-			this->frogSprite.setRotation(0);
+		if (this->frogSprite.getRotation() != 90)
+			this->frogSprite.setRotation(90);
 
 	}
 
