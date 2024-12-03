@@ -89,7 +89,7 @@ void Frog::render(sf::RenderWindow& window)
 {
 	//window.draw(this->frogShapeTest);
 	window.draw(this->frogSprite);
-	window.draw(this->JumpingSprite);
+	//window.draw(this->JumpingSprite);
 }
 
 void Frog::update(float deltaTime, Direction Dir)

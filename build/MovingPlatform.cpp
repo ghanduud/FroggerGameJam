@@ -3,7 +3,8 @@
 
 MovingPlatform::MovingPlatform(int size, PlatformType type,Direction direction,int x, TextureLoader& textureLoader) {
     platformShape.setSize(sf::Vector2f(80 * size, 80));
-    platformShape.setTexture(&textureLoader.bigSnakeTexture);
+    if(type==Hopper) platformShape.setTexture(&textureLoader.bigSnakeTexture);
+    if (type == Obstical) platformShape.setTexture(&textureLoader.bigSnakeTexture);
     if (direction == RIGHT) platformShape.setPosition(x-platformShape.getSize().x, 0);
     if (direction == LEFT) platformShape.setPosition(800+x, 0);
     platformSize = size;
