@@ -5,8 +5,8 @@ Lane::Lane(LaneType type, sf::Vector2f size, TextureLoader& textureLoader, bool 
     this->laneSpeed = speed;
     laneType = type;
     laneTile.setSize(size);
-    laneDirection = LEFT;
-    if (rand() % 2 == 0) laneDirection = RIGHT;
+    laneDirection = RIGHT;
+    //if (rand() % 2 == 0) laneDirection = RIGHT;
     int xsize;
     switch (type) {
     case resting:
@@ -20,15 +20,20 @@ Lane::Lane(LaneType type, sf::Vector2f size, TextureLoader& textureLoader, bool 
             int size = rand() % 3 + 1;
             MovingPlatform platform(size, Obstical, laneDirection,xsize, textureLoader);
             this->movingPlatforms.push_back(platform);
-            xsize += 80 * size;
+            xsize += 80 * (size + rand() % 3+2);
         }
+        totalsize = xsize;
         break;
     case water:
         this->setSpritToLane(textureLoader.waterTexture,size,1, textureLoader.landTexture);
+        xsize = 0;
         for (int i = 0;i < 7;i++) {
-            MovingPlatform platform(rand() % 3 + 1, Hopper, laneDirection,i*80,textureLoader);
+            int size = rand() % 3 + 1;
+            MovingPlatform platform(size, Hopper, laneDirection,xsize,textureLoader);
             this->movingPlatforms.push_back(platform);
+            xsize += 80 * (size + rand() % 3+2);
         }
+        totalsize = xsize;
         if (isInverted) {
             std::cout << isInverted << std::endl;
             sf::Vector2f currentScale = landSprit.getScale();
@@ -97,8 +102,10 @@ sf::RectangleShape Lane::setObsticalShape(int number) {
 
 void Lane::update(float deltaTime,int start,int index) {
     int Ypos = 800 + 80 * (start - index - 1);
+    float dspeed = laneSpeed;
+    if (laneDirection == LEFT) dspeed *= -1;
     for (int i = 0; i < movingPlatforms.size(); i++)
     {
-        movingPlatforms[i].update(deltaTime, laneSpeed, Ypos);
+        movingPlatforms[i].update(deltaTime, dspeed, Ypos,totalsize);
     }
 }

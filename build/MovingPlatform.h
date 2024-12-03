@@ -23,7 +23,7 @@ public:
 
     MovingPlatform(int size, PlatformType type, Direction direction, int x, TextureLoader& textureLoader);
 
-    void update(float dt, float speed, float laneYPosition);
+    void update(float dt, float speed, float laneYPosition, float totalsize);
 
     void render(sf::RenderWindow& window);
 };
