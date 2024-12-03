@@ -25,8 +25,8 @@ TextureLoader::TextureLoader()
     restTexture.setRepeated(true);
 
     // frog stuff
-    if (!this->frogJumpingTexture.loadFromFile("../resources/fire-frogger12.png")) { 
-        std::cerr << "Failed to load image.png from ghandy" << std::endl;
+    if (!this->frogJumpingTexture.loadFromFile("../resources/fire-frogger1234.png")) { 
+        std::cerr << "Failed to load image.png" << std::endl;
         return;
     }
 

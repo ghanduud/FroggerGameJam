@@ -24,9 +24,10 @@ public:
 
 	sf::RectangleShape frogShapeTest; // for testing on
 
-	
+
 
 	sf::Sprite frogSprite; // the used sprite
+	sf::Sprite JumpingSprite;
 
 
 	AABBCollider frogCollider;
@@ -35,7 +36,7 @@ public:
 
 	Frog();
 	Frog(sf::Vector2f Position, float laneHeight, TextureLoader& textureLoader, sf::Vector2f size);
-	
+
 	//void getSprites();
 	bool isDead();
 	void death();
