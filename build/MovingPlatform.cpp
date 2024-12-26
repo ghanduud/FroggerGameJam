@@ -3,14 +3,42 @@
 
 MovingPlatform::MovingPlatform(int size, PlatformType type,Direction direction,int x, TextureLoader& textureLoader) {
     platformShape.setSize(sf::Vector2f(80 * size, 80));
-    if(type==Hopper) platformShape.setTexture(&textureLoader.trunkTexture);
+    if(type==Hopper && size == 3) 
     {
+        platformShape.setTexture(&textureLoader.trunkTexture);
         this->platformCollider.ul = sf::Vector2f(0, 40);
         this->platformCollider.lr = sf::Vector2f(size * 70, 75);
 
     }
-    if (type == Obstical) {
+    if (type == Hopper && size == 2)
+    {
+        platformShape.setTexture(&textureLoader.leaveTexture);
+        this->platformCollider.ul = sf::Vector2f(0, 40);
+        this->platformCollider.lr = sf::Vector2f(size * 70, 75);
+
+    }
+
+    if (type == Hopper && size == 1)
+    {
+        platformShape.setTexture(&textureLoader.turtleTexture);
+        this->platformCollider.ul = sf::Vector2f(0, 40);
+        this->platformCollider.lr = sf::Vector2f(size * 70, 75);
+
+    }
+    if (type == Obstical && size == 3 ) {
         platformShape.setTexture(&textureLoader.bigSnakeTexture);
+        this->platformCollider.ul = sf::Vector2f(20, 20);
+        this->platformCollider.lr = sf::Vector2f(size * 50, 60);
+    }
+
+    if (type == Obstical && size == 2) {
+        platformShape.setTexture(&textureLoader.midSnakeTexture);
+        this->platformCollider.ul = sf::Vector2f(20, 20);
+        this->platformCollider.lr = sf::Vector2f(size * 50, 60);
+    }
+
+    if (type == Obstical && size == 1) {
+        platformShape.setTexture(&textureLoader.bugTexture);
         this->platformCollider.ul = sf::Vector2f(20, 20);
         this->platformCollider.lr = sf::Vector2f(size * 50, 60);
     }
@@ -35,7 +63,7 @@ void MovingPlatform::update(float dt, float speed,float laneYPosition,float tota
     else if(speed<0&&newXPosition<800-totalsize){
         newXPosition = 800;
     }
-    //std::cout << newXPosition << "\n";
+
     platformShape.setPosition(sf::Vector2f(newXPosition, laneYPosition));
     platformCollider.updatePosition(platformShape.getPosition());
 }

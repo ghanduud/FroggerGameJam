@@ -16,11 +16,11 @@ Lane::Lane(LaneType type, sf::Vector2f size, TextureLoader& textureLoader, bool 
     case road:
         this->setSpritToLane(textureLoader.landTexture,size,0, textureLoader.landTexture);
         xsize = 0;
-        for (int i = 0;i < 4;i++) {
-            int size = 1;
-            MovingPlatform platform(size, Obstical, laneDirection,xsize, textureLoader);
+        for (int i = 0; i < 4; i++) {
+            int size = 1 + rand() % 3;
+            MovingPlatform platform(size, Obstical, laneDirection, xsize, textureLoader);
             this->movingPlatforms.push_back(platform);
-            xsize += 80 * (size + rand() % 3+2);
+            xsize += 80 * (size + rand() % 3 + 2);
         }
         totalsize = xsize;
         break;
@@ -28,7 +28,7 @@ Lane::Lane(LaneType type, sf::Vector2f size, TextureLoader& textureLoader, bool 
         this->setSpritToLane(textureLoader.waterTexture,size,1, textureLoader.landTexture);
         xsize = 0;
         for (int i = 0;i < 7;i++) {
-            int size = 3 ;
+            int size = 1 + rand() % 3;
             MovingPlatform platform(size, Hopper, laneDirection,xsize,textureLoader);
             this->movingPlatforms.push_back(platform);
             xsize += 80 * (size + rand() % 3+2);

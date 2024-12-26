@@ -36,8 +36,7 @@ int main() {
 
         sound.setLoop(true);
 
-        sound.play()
-            ;
+        sound.play();
     
     TextureLoader textureLoader;
     Level level1(textureLoader);

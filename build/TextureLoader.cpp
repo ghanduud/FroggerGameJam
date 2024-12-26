@@ -8,7 +8,7 @@ TextureLoader::TextureLoader()
     landTexture.setRepeated(true);
 
 
-    if (!this->waterTexture.loadFromFile("../resources/dfcvs.png")) {
+    if (!this->waterTexture.loadFromFile("../resources/water5.png")) {
         std::cout << "Error loading land texture!" << std::endl;
     }
     waterTexture.setRepeated(true);
@@ -25,6 +25,12 @@ TextureLoader::TextureLoader()
     restTexture.setRepeated(true);
 
     if (!this->endTexture.loadFromFile("../resources/line.png")) {
+        std::cout << "Error loading land texture!" << std::endl;
+    }
+    endTexture.setRepeated(true);
+
+
+    if (!this->leaveTexture.loadFromFile("../resources/leaves.png")) {
         std::cout << "Error loading land texture!" << std::endl;
     }
     endTexture.setRepeated(true);
@@ -46,6 +52,21 @@ TextureLoader::TextureLoader()
         return;
     }
     if (!this->trunkTexture.loadFromFile("../resources/wood-trunk.png")) {
+        std::cerr << "Failed to load image.png" << std::endl;
+        return;
+    }
+
+    if (!this->turtleTexture.loadFromFile("../resources/turtle.png")) {
+        std::cerr << "Failed to load image.png" << std::endl;
+        return;
+    }
+
+    if (!this->bugTexture.loadFromFile("../resources/beetle.png")) {
+        std::cerr << "Failed to load image.png" << std::endl;
+        return;
+    }
+
+    if (!this->midSnakeTexture.loadFromFile("../resources/snakeMid.png")) {
         std::cerr << "Failed to load image.png" << std::endl;
         return;
     }
