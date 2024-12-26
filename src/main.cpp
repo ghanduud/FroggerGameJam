@@ -22,13 +22,6 @@ int main() {
     sf::Clock clock;
     sf::Time timePerFrame = sf::seconds(1.f / 60.f);
 
-    //Renderer r;
-    // 
-    // 
-    // 
-    // 
-    //Game pw;
-
 
     sf::SoundBuffer buffer;
         
@@ -81,7 +74,7 @@ int main() {
             
         }
         if (level1.isGameOver) window.close();
-        level1.update(timePerFrame.asSeconds(), direction);
+        level1.update(timePerFrame.asSeconds(), direction, textureLoader);
 
         //pw.Update(0.2);
         window.clear();

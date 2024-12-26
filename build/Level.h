@@ -24,7 +24,8 @@ public:
 
 	Level(TextureLoader& textureLoader);
 
-	void update(float dt, Direction direction);
+	void update(float dt, Direction direction, TextureLoader& textureLoader);
 	void renderMap(int sizeOfLanesInWindow, sf::RenderWindow& window);
-	void resetLevel();
+	void resetLevel(TextureLoader& textureLoader);
+	void winGame(TextureLoader& textureLoader);
 };

@@ -24,7 +24,7 @@ TextureLoader::TextureLoader()
     }
     restTexture.setRepeated(true);
 
-    if (!this->endTexture.loadFromFile("../resources/leaves.png")) {
+    if (!this->endTexture.loadFromFile("../resources/line.png")) {
         std::cout << "Error loading land texture!" << std::endl;
     }
     endTexture.setRepeated(true);

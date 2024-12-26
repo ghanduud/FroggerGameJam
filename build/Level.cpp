@@ -70,11 +70,26 @@ Level::Level(TextureLoader& textureLoader) {
 
 
 
-void Level::resetLevel() {
+void Level::resetLevel(TextureLoader& textureLoader) {
+    // Set initial frog position
+    sf::Vector2f frogPosition(440, 80 * 6 + 40);
+    Frog frog(frogPosition, 80, textureLoader, sf::Vector2f(80, 80));
+    this->frog = frog;
+    this->frogCurrentLane = start + 4;
 
+
+    this->score = 0;
+    this->start = 10;
+
+    this->isGameOver = false;
+    this->gameOverTimer = 0.0f;
 }
 
-void Level::update(float dt, Direction direction) {
+void Level::winGame(TextureLoader& textureLoader) {
+    resetLevel(textureLoader);
+}
+
+void Level::update(float dt, Direction direction, TextureLoader& textureLoader) {
 
     bool inWater = false;
 
@@ -133,6 +148,7 @@ void Level::update(float dt, Direction direction) {
     }
 
     if (this->lanes[this->frogCurrentLane].laneType == LaneType::END) {
+        winGame(textureLoader);
         std::cout << "win the game" << std::endl;
         return;
 
@@ -152,9 +168,7 @@ void Level::update(float dt, Direction direction) {
                 if (this->lanes[this->frogCurrentLane].laneType == LaneType::road) {
 
                     std::cout << "die" << std::endl;
-                    this->frog.isAlive = false;
-                    this->isGameOver = true;
-                    return;
+                    resetLevel(textureLoader);
                 }
 
                 
@@ -165,9 +179,7 @@ void Level::update(float dt, Direction direction) {
     if (inWater) {
 
         std::cout << "die" << std::endl;
-        this->frog.isAlive = false;
-        this->isGameOver = true;
-        return;
+        resetLevel(textureLoader);
     }
 }
 
