@@ -24,7 +24,7 @@ public:
 
 	float laneSpeed = 0;
 
-	sf::RectangleShape frogShapeTest; // for testing on
+	sf::ConvexShape frogShapeTest; // for testing on
 
 
 
@@ -47,6 +47,6 @@ public:
 	void render(sf::RenderWindow& window);
 	void stretchingLegs(float deltaTime);
 	void frogOnWater(float speed, float dt);
-
+	void makedebugshape(sf::ConvexShape& shape, sf::Vector2f ul, sf::Vector2f lr);
 };
 

@@ -30,19 +30,33 @@ Level::Level(TextureLoader& textureLoader) {
     // Alternating water/road lanes separated by resting lanes
     for (int i = 0; i < 20; i++) { // Total 20 lanes (10 water, 10 road)
         // Resting lane before water/road
-        Lane restingLane(LaneType::resting, sf::Vector2f(800, 80), textureLoader, false, 70);
-        this->lanes.push_back(restingLane);
-
-        if (i % 2 == 0) {
-            // Water lane
+		int chance = rand() % 3;
+		if (chance == 0) {
+			Lane restingLane(LaneType::resting, sf::Vector2f(800, 80), textureLoader, false, 70);
+			this->lanes.push_back(restingLane);
+		}
+        else if (chance == 1) {
             Lane waterLane(LaneType::water, sf::Vector2f(800, 80), textureLoader, i % 2 == 0, 80 + (rand() % 11) * 5);
             this->lanes.push_back(waterLane);
         }
-        else {
-            // Road lane
+        else
+        {
             Lane roadLane(LaneType::road, sf::Vector2f(800, 80), textureLoader, i % 2 == 0, 80 + (rand() % 11) * 5);
             this->lanes.push_back(roadLane);
         }
+        //Lane restingLane(LaneType::resting, sf::Vector2f(800, 80), textureLoader, false, 70);
+        //this->lanes.push_back(restingLane);
+
+        //if (i % 2 == 0) {
+        //    // Water lane
+        //    Lane waterLane(LaneType::water, sf::Vector2f(800, 80), textureLoader, i % 2 == 0, 80 + (rand() % 11) * 5);
+        //    this->lanes.push_back(waterLane);
+        //}
+        //else {
+        //    // Road lane
+        //    Lane roadLane(LaneType::road, sf::Vector2f(800, 80), textureLoader, i % 2 == 0, 80 + (rand() % 11) * 5);
+        //    this->lanes.push_back(roadLane);
+        //}
 
 
     }
@@ -154,9 +168,9 @@ void Level::update(float dt, Direction direction, TextureLoader& textureLoader) 
 
     }
 
-    for (Lane& lane : this->lanes) {
+    //for (Lane& lane : this->lanes) {
 
-        for (MovingPlatform& mp : lane.movingPlatforms) {
+        for (MovingPlatform& mp : lanes[frogCurrentLane].movingPlatforms) {
 
             if (frog.frogCollider.checkCollision(mp.platformCollider)) {
 
@@ -175,7 +189,7 @@ void Level::update(float dt, Direction direction, TextureLoader& textureLoader) 
 
             }
         }
-    }
+    //}
     if (inWater) {
 
         std::cout << "die" << std::endl;

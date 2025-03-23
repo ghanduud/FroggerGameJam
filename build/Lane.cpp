@@ -20,7 +20,7 @@ Lane::Lane(LaneType type, sf::Vector2f size, TextureLoader& textureLoader, bool 
             int size = 1 + rand() % 3;
             MovingPlatform platform(size, Obstical, laneDirection, xsize, textureLoader);
             this->movingPlatforms.push_back(platform);
-            xsize += 80 * (size + rand() % 3 + 2);
+            xsize += 80 * (size + rand() % 4 + 3);
         }
         totalsize = xsize;
         break;
@@ -67,7 +67,7 @@ void Lane::render(sf::RenderWindow& window, int index)
 void Lane::renderObsticals(sf::RenderWindow& window)
 {
     for (MovingPlatform mp : this->movingPlatforms) {
-        window.draw(mp.platformShape);
+		mp.render(window);
     }
 }
 

@@ -20,15 +20,17 @@ Frog::Frog(sf::Vector2f Position, float laneHeight, TextureLoader& textureLoader
 	this->frogDirection = UP;
 
 	this->frogCollider.position = Position;
-	this->frogCollider.ul = Position;
-	this->frogCollider.lr = Position + sf::Vector2f(this->frogSize, this->frogSize);
+	this->frogCollider.ul = Position - sf::Vector2f(this->frogSize, this->frogSize) / 2.0f;
+	this->frogCollider.lr = Position + sf::Vector2f(this->frogSize, this->frogSize) / 2.0f;
 
 	// testing frog
-	this->frogShapeTest.setFillColor(sf::Color::Red);
-	this->frogShapeTest.setOrigin(laneHeight / 2, laneHeight / 2);
-	this->frogShapeTest.setPosition(Position);
-	this->frogShapeTest.setSize(sf::Vector2f(laneHeight, laneHeight));
-	this->frogShapeTest.setRotation(270.f);
+	this->frogShapeTest.setFillColor(sf::Color(0,0,255,100));
+	this->frogShapeTest.setPointCount(4);
+	makedebugshape(frogShapeTest, frogCollider.ul, frogCollider.lr);
+	//this->frogShapeTest.setOrigin(laneHeight / 2, laneHeight / 2);
+	//this->frogShapeTest.setPosition(Position);
+	//this->frogShapeTest.setSize(sf::Vector2f(laneHeight, laneHeight));
+	//this->frogShapeTest.setRotation(270.f);
 
 
 	// Initialize sprite
@@ -87,8 +89,8 @@ bool Frog::isOutOfScreenBounds(sf::Vector2f newPosition, int screenWidth, int sc
 
 void Frog::render(sf::RenderWindow& window)
 {
-	//window.draw(this->frogShapeTest);
 	window.draw(this->frogSprite);
+	if(debug) window.draw(this->frogShapeTest);
 	//window.draw(this->JumpingSprite);
 }
 
@@ -154,6 +156,7 @@ void Frog::update(float deltaTime, Direction Dir)
 
 	// updating the sprite position
 	this->frogSprite.setPosition(this->frogPosition);
+	makedebugshape(frogShapeTest, frogCollider.ul, frogCollider.lr);
 }
 
 void Frog::stretchingLegs(float deltaTime)
@@ -175,5 +178,14 @@ void Frog::frogOnWater(float speed ,float dt) {
 
 	// updating the sprite position
 	this->frogSprite.setPosition(this->frogPosition);
+	makedebugshape(frogShapeTest, frogCollider.ul, frogCollider.lr);
+}
+
+void Frog::makedebugshape(sf::ConvexShape& shape, sf::Vector2f ul, sf::Vector2f lr)
+{
+	shape.setPoint(0, ul);
+	shape.setPoint(1, sf::Vector2f(lr.x, ul.y));
+	shape.setPoint(2, lr);
+	shape.setPoint(3, sf::Vector2f(ul.x, lr.y));
 }
 

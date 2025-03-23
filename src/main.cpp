@@ -15,6 +15,7 @@
 //pofo was here
 
 int main() {
+    srand(static_cast<unsigned int>(time(0)));
     sf::RenderWindow window(sf::VideoMode(800, 800), "SFML Circle Collision", sf::Style::Default);
     window.setFramerateLimit(60);
     window.setKeyRepeatEnabled(false);
@@ -25,7 +26,7 @@ int main() {
 
     sf::SoundBuffer buffer;
         
-    if (!buffer.loadFromFile("../resources/audio.ogg")) {
+    if (!buffer.loadFromFile("../resources/backgroundmusic.ogg")) {
         std::cerr << "Failed to load audio file!" << std::endl;
         return -1;
     }
@@ -35,6 +36,7 @@ int main() {
 
 
         sound.setLoop(true);
+		sound.setVolume(50);
 
         sound.play();
     

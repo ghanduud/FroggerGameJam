@@ -1,6 +1,8 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 
+static bool debug = false;
+
 class AABBCollider {
 public:
     sf::Vector2f ul;   

@@ -13,6 +13,7 @@ enum PlatformType
 class MovingPlatform {
 public:
     sf::RectangleShape platformShape;
+    sf::ConvexShape platformdebugShape;
 
     sf::Sprite platformSprite;
     AABBCollider platformCollider;
@@ -26,4 +27,6 @@ public:
     void update(float dt, float speed, float laneYPosition, float totalsize);
 
     void render(sf::RenderWindow& window);
+
+    void makedebugshape(sf::ConvexShape& shape, sf::Vector2f ul, sf::Vector2f lr);
 };
