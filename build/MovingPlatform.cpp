@@ -18,8 +18,8 @@ MovingPlatform::MovingPlatform(int size, PlatformType type,Direction direction,i
         {
             platformShape.setTexture(&textureLoader.turtleTexture);
         }
-        this->platformCollider.ul = sf::Vector2f(-10, 0);
-        this->platformCollider.lr = sf::Vector2f(size * 80 + 10, 80);
+        this->platformCollider.ul = sf::Vector2f(35, 0);
+        this->platformCollider.lr = sf::Vector2f(size * 80 - 35, 80);
 	}
 	else if (type == Obstical) {
         if (size == 3) {
