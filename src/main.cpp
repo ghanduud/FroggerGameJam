@@ -16,7 +16,7 @@
 
 int main() {
     srand(static_cast<unsigned int>(time(0)));
-    sf::RenderWindow window(sf::VideoMode(800, 800), "SFML Circle Collision", sf::Style::Default);
+    sf::RenderWindow window(sf::VideoMode(800, 800), "SFML Frogger", sf::Style::Default);
     window.setFramerateLimit(60);
     window.setKeyRepeatEnabled(false);
 
